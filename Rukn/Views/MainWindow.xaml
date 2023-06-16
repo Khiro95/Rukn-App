@@ -11,7 +11,7 @@
         xmlns:gl="clr-namespace:System.Globalization;assembly=System.Runtime"
         mc:Ignorable="d"
         FontFamily="{StaticResource Cairo}" FontSize="14"
-        Title="Rukn - رُكن" Width="960" UseLayoutRounding="True" WindowStartupLocation="CenterScreen" MinHeight="700" MinWidth="960">
+        Title="Rukn - رُكن" Width="960" UseLayoutRounding="True" WindowStartupLocation="CenterScreen" WindowState="Maximized" MinHeight="700" MinWidth="960">
     <Window.DataContext>
         <vm:MainViewModel BackgroundColor="White" MinWidth="128" MinHeight="92"/>
     </Window.DataContext>
