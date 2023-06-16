@@ -1,0 +1,555 @@
+﻿<Window x:Class="Rukn.Views.MainWindow" x:Name="window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rukn"
+        xmlns:ctrl="clr-namespace:Rukn.Controls"
+        xmlns:vm="clr-namespace:Rukn.ViewModels"
+        xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
+        xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+        xmlns:gl="clr-namespace:System.Globalization;assembly=System.Runtime"
+        mc:Ignorable="d"
+        FontFamily="{StaticResource Cairo}" FontSize="14"
+        Title="Rukn - رُكن" Width="960" UseLayoutRounding="True" WindowStartupLocation="CenterScreen" MinHeight="700" MinWidth="960">
+    <Window.DataContext>
+        <vm:MainViewModel BackgroundColor="White" MinWidth="128" MinHeight="92"/>
+    </Window.DataContext>
+    <Window.Resources>
+        <SolidColorBrush x:Key="TextSecondary" Color="Gray"/>
+        <Style TargetType="colorpicker:StandardColorPicker">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style x:Key="ButtonGroupLikeStyle" TargetType="ListBox">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Padding" Value="6,5"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                        <ContentPresenter/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#b8ccc2"/>
+                                <Setter Property="Foreground" Value="#28664c"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ItemsPresenter>
+                                <ItemsPresenter.Clip>
+                                    <MultiBinding Converter="{StaticResource BorderClipConverter}">
+                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
+                                        <Binding Path="CornerRadius" ElementName="border"/>
+                                        <Binding Path="BorderThickness" ElementName="border"/>
+                                    </MultiBinding>
+                                </ItemsPresenter.Clip>
+                            </ItemsPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="GBStyle" TargetType="GroupBox">
+            <Setter Property="Padding" Value="8,8,16,8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupBox">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <ContentPresenter Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                              TextBlock.FontWeight="DemiBold"
+                                              TextBlock.Foreground="#28664c"/>
+                            <Rectangle Fill="#b8ccc2" Height="1" Margin="8,0,0,0" Grid.Column="1"/>
+                            <ContentPresenter Grid.Row="1" Grid.ColumnSpan="2" Margin="{TemplateBinding Padding}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ToggleStyle" TargetType="ToggleButton">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+            <Setter Property="MinHeight" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <ContentPresenter Margin="0,0,8,0"/>
+                            <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="{Binding ElementName=rec, Path=ActualHeight}" Grid.Column="1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition MinWidth="{Binding ElementName=border, Path=ActualHeight}"/>
+                                        <ColumnDefinition MinWidth="{Binding ElementName=border, Path=ActualHeight}"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Control x:Name="rec"/>
+                                    </Grid>
+                                    <Border x:Name="thumb" Background="White" BorderBrush="LightGray" BorderThickness="0" CornerRadius="{Binding ElementName=rec, Path=ActualHeight}">
+                                        <Border.Effect>
+                                            <DropShadowEffect x:Name="shadow" BlurRadius="4" ShadowDepth="0" Direction="0" Color="Black" Opacity=".4"/>
+                                        </Border.Effect>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#b8ccc2"/>
+                                <Setter TargetName="thumb" Property="Background" Value="#28664c"/>
+                                <Setter TargetName="thumb" Property="Grid.Column" Value="1"/>
+                                <Setter TargetName="thumb" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="4" ShadowDepth="0" Direction="0" Color="#28664c" Opacity=".4"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#b8ccc2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate DataType="{x:Type vm:AyaReferenceViewModel}">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{x:Static local:Resources.Mode}" Foreground="{StaticResource TextSecondary}"/>
+                    <ComboBox ItemsSource="{Binding Source={StaticResource ReferenceModeEnum}}" SelectedItem="{Binding Mode}" Grid.Column="1" Width="150"/>
+                </Grid>
+                <ToggleButton Style="{StaticResource ToggleStyle}" x:Name="brackets" Content="{x:Static local:Resources.IncludeBrackets}" IsChecked="{Binding IncludeBrackets}" Margin="0,16,0,0"/>
+            </StackPanel>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Mode}" Value="None">
+                    <Setter TargetName="brackets" Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        <DataTemplate x:Key="TextBase" DataType="{x:Type vm:TextViewModel}">
+            <StackPanel Orientation="Horizontal">
+                <Path Data="{StaticResource zi_font_size}" Fill="Gray" VerticalAlignment="Center"/>
+                <ComboBox ItemStringFormat="{}{0} px" Text="{Binding FontSize, StringFormat='\{0:0.#} px', Converter={StaticResource FontSizeConverter}}" IsEditable="True" Width="70" Margin="4,0,0,0">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
+                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBox.ItemsSource>
+                        <x:Array Type="{x:Type sys:Double}">
+                            <sys:Double>16</sys:Double>
+                            <sys:Double>20</sys:Double>
+                            <sys:Double>24</sys:Double>
+                            <sys:Double>32</sys:Double>
+                            <sys:Double>40</sys:Double>
+                            <sys:Double>48</sys:Double>
+                            <sys:Double>56</sys:Double>
+                            <sys:Double>64</sys:Double>
+                            <sys:Double>72</sys:Double>
+                        </x:Array>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
+                <colorpicker:PortableColorPicker SelectedColor="{Binding Foreground, Mode=TwoWay}" ShowAlpha="False" Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}" Margin="8,2,0,2"/>
+                <ListBox Style="{StaticResource ButtonGroupLikeStyle}" SelectedValue="{Binding Alignment}" SelectedValuePath="Tag" Margin="8,0,0,0">
+                    <ListBoxItem Tag="Left">
+                        <Path Data="{StaticResource zi_align-left}" Fill="{Binding (TextBlock.Foreground), RelativeSource={RelativeSource Self}}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="Center">
+                        <Path Data="{StaticResource zi_align-center}" Fill="{Binding (TextBlock.Foreground), RelativeSource={RelativeSource Self}}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="Right">
+                        <Path Data="{StaticResource zi_align-right}" Fill="{Binding (TextBlock.Foreground), RelativeSource={RelativeSource Self}}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </ListBoxItem>
+                </ListBox>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AyaReferenceTextViewModel}">
+            <GroupBox Header="{Binding Label, Converter={StaticResource StringToResourceConverter}}" Style="{StaticResource GBStyle}" Margin="0,16,0,0">
+                <StackPanel>
+                    <ContentPresenter Content="{Binding}" ContentTemplate="{StaticResource TextBase}"/>
+                    <Rectangle Height="1" Fill="LightGray" Margin="0,16"/>
+                    <ContentPresenter Content="{Binding Reference}"/>
+                </StackPanel>
+            </GroupBox>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AyaTextViewModel}">
+            <GroupBox Header="{Binding Label, Converter={StaticResource StringToResourceConverter}}" Style="{StaticResource GBStyle}" Margin="0,16,0,0">
+                <StackPanel>
+                    <ContentPresenter Content="{Binding}" ContentTemplate="{StaticResource TextBase}"/>
+                    <Rectangle Height="1" Fill="LightGray" Margin="0,16"/>
+                    <ToggleButton Style="{StaticResource ToggleStyle}" Content="{x:Static local:Resources.IncludeNumbers}" IsChecked="{Binding IncludeNumbers}"/>
+                    <Grid Margin="0,16" x:Name="ref_Header">
+                        <Rectangle Height="1" Fill="LightGray"/>
+                        <TextBlock Text="{x:Static local:Resources.Reference}" FontSize="12" Foreground="{StaticResource TextSecondary}" Background="White" HorizontalAlignment="Center" Padding="8,0"/>
+                    </Grid>
+                    <ContentPresenter x:Name="reference" Content="{Binding Reference}"/>
+                </StackPanel>
+            </GroupBox>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Reference.Mode}" Value="Isolated">
+                    <Setter TargetName="ref_Header" Property="Visibility" Value="Collapsed"/>
+                    <Setter TargetName="reference" Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ArabicAyaTextViewModel}">
+            <GroupBox Header="{Binding Label, Converter={StaticResource StringToResourceConverter}}" Style="{StaticResource GBStyle}" Margin="0,16,0,0">
+                <StackPanel>
+                    <ContentPresenter Content="{Binding}" ContentTemplate="{StaticResource TextBase}"/>
+                    <Rectangle Height="1" Fill="LightGray" Margin="0,16"/>
+                    <ToggleButton Style="{StaticResource ToggleStyle}" Content="{x:Static local:Resources.IncludeNumbers}" IsChecked="{Binding IncludeNumbers}"/>
+                    <ToggleButton Style="{StaticResource ToggleStyle}" Content="{x:Static local:Resources.IncludeParenthesis}" IsChecked="{Binding IncludeParenthesis}" Margin="0,16,0,0"/>
+                    <Grid Margin="0,16,0,0" Visibility="{Binding IncludeParenthesis, Converter={StaticResource BooleanToVisiblilityConverter}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Static local:Resources.Style}" Foreground="{StaticResource TextSecondary}" Margin="0,0,8,0"/>
+                        <ComboBox ItemsSource="{Binding Source={x:Static vm:ArabicAyaTextViewModel.DecoratedParenthesis}}"
+                                  SelectedItem="{Binding Parenthesis}"
+                                  Width="90"
+                                  FontWeight="Regular"
+                                  Grid.Column="1">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal"
+                                                FlowDirection="LeftToRight"
+                                                TextBlock.FontSize="24"
+                                                TextBlock.FontFamily="{StaticResource UthmanicHafs}"
+                                                TextBlock.LineStackingStrategy="BlockLineHeight"
+                                                TextBlock.LineHeight="27">
+                                        <TextBlock Text="{Binding [0], Mode=OneTime}"/>
+                                        <TextBlock Text="{Binding [1], Mode=OneTime}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </Grid>
+                    <Grid Margin="0,16" x:Name="ref_Header">
+                        <Rectangle Height="1" Fill="LightGray"/>
+                        <TextBlock Text="{x:Static local:Resources.Reference}" FontSize="12" Foreground="{StaticResource TextSecondary}" Background="White" HorizontalAlignment="Center" Padding="8,0"/>
+                    </Grid>
+                    <ContentPresenter x:Name="reference" Content="{Binding Reference}"/>
+                </StackPanel>
+            </GroupBox>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Reference.Mode}" Value="Isolated">
+                    <Setter TargetName="ref_Header" Property="Visibility" Value="Collapsed"/>
+                    <Setter TargetName="reference" Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#194030" Grid.Row="0" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="72"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Border Grid.RowSpan="2">
+                <Border.Background>
+                    <DrawingBrush Stretch="Fill" TileMode="Tile" Viewport="0,0,32,32" ViewportUnits="Absolute">
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing Geometry="{StaticResource shape}" Brush="#09FFFFFF"/>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Border.Background>
+            </Border>
+            <Border x:Name="decoration">
+                <Border.Background>
+                    <DrawingBrush Stretch="Fill" TileMode="Tile" Viewport="0,0,32,32" ViewportUnits="Absolute">
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing Geometry="{StaticResource shape}" Brush="#FFECD380"/>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Border.Background>
+                <Border.OpacityMask>
+                    <DrawingBrush Viewport="0,0,1,1">
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing Geometry="{StaticResource clip}">
+                                <GeometryDrawing.Brush>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#AA000000" Offset="0.3"/>
+                                        <GradientStop Color="#DA000000" Offset="0.5"/>
+                                        <GradientStop Color="#AA000000" Offset="0.7"/>
+                                        <GradientStop Color="Black" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </GeometryDrawing.Brush>
+                            </GeometryDrawing>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Border.OpacityMask>
+            </Border>
+            <!-- Using 'Path' causes a weird drawing issue when Grid column width change, somehow the content go off the window -->
+            <Border>
+                <Border.Background>
+                    <DrawingBrush>
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing Geometry="{StaticResource decoration}">
+                                <GeometryDrawing.Brush>
+                                    <LinearGradientBrush Opacity="1">
+                                        <GradientStop Color="#B69154" Offset="0"/>
+                                        <GradientStop Color="#ECD380" Offset="0.5"/>
+                                        <GradientStop Color="#B69154" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </GeometryDrawing.Brush>
+                            </GeometryDrawing>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Border.Background>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="6" Direction="90" Color="#194030"/>
+                </Border.Effect>
+            </Border>
+            <Path Data="{StaticResource hafs-asim}"
+                  Fill="#EBD99E"
+                  Stretch="Uniform"
+                  Height="30"
+                  Margin="0,0,0,-8"
+                  VerticalAlignment="Bottom"
+                  FlowDirection="LeftToRight"
+                  Grid.Row="0"/>
+            <Grid Margin="8,16,8,8" Grid.IsSharedSizeScope="True" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="col"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="col"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource logo}" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1">
+                    <Border Background="#28664c" CornerRadius="10" Padding="5" ClipToBounds="True">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Static local:Resources.Surah}" Foreground="White" VerticalAlignment="Center" Margin="8,0,16,0"/>
+                            <ComboBox ItemsSource="{Binding Source={x:Static local:QuranReader.Quran}, Path=Suras}"
+                                      SelectedItem="{Binding AyaSelector.SelectedSurah}"
+                                      MinWidth="160"
+                                      BorderThickness="0">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding ID}"/>
+                                            <TextBlock Text="-" Margin="8,0"/>
+                                            <TextBlock Text="{Binding EnglishName}" x:Name="surahName"/>
+                                        </StackPanel>
+                                        <DataTemplate.Triggers>
+                                            <Trigger Property="FlowDirection" Value="RightToLeft">
+                                                <Setter TargetName="surahName" Property="Text" Value="{Binding Name}"/>
+                                            </Trigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                    </Border>
+                    <Border Background="#28664c" CornerRadius="10" Padding="5" Margin="16,0,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Static local:Resources.Ayah}" Foreground="White" VerticalAlignment="Center" Margin="8,0,16,0"/>
+                            <ComboBox ItemsSource="{Binding AyaSelector.SelectedSurah.Ayas}"
+                                      BorderThickness="0"
+                                      SelectedValue="{Binding AyaSelector.StartIndex}"
+                                      SelectedValuePath="ID"
+                                      DisplayMemberPath="ID"
+                                      MinWidth="82"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Background="#28664c" CornerRadius="10" Padding="5" Margin="16,0,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Static local:Resources.To}" Foreground="White" VerticalAlignment="Center" Margin="8,0,16,0"/>
+                            <ComboBox ItemsSource="{Binding AyaSelector.SelectedSurah.Ayas}"
+                                      SelectedValue="{Binding AyaSelector.EndIndex}"
+                                      SelectedValuePath="ID"
+                                      DisplayMemberPath="ID"
+                                      MinWidth="82"
+                                      BorderThickness="0"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <Border Background="#28664c" CornerRadius="10" Padding="5" Grid.Column="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource zi_translate}" Fill="White" VerticalAlignment="Center" Margin="8,0,16,0"/>
+                        <ComboBox SelectedValuePath="Tag"
+                                  SelectedValue="{Binding ElementName=window, Path=Language, ConverterCulture={x:Static gl:CultureInfo.CurrentCulture}}"
+                                  BorderThickness="0"
+                                  MinWidth="100">
+                            <ComboBoxItem Tag="en">English</ComboBoxItem>
+                            <ComboBoxItem Tag="ar" FlowDirection="RightToLeft">العربية</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+        <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderBrush="LightGray" BorderThickness="0,0,1,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Width="260" Margin="8,8,0,8">
+                    <GroupBox Header="{x:Static local:Resources.Board}" Style="{StaticResource GBStyle}">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="16"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="{x:Static local:Resources.Background}" Foreground="{StaticResource TextSecondary}"/>
+                                <colorpicker:PortableColorPicker SelectedColor="{Binding BackgroundColor, Mode=TwoWay}" ShowAlpha="False" Grid.Column="2"/>
+                                <TextBlock Text="{x:Static local:Resources.Size}" Foreground="{StaticResource TextSecondary}" Grid.Row="2"/>
+                                <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
+                                    <TextBox Text="{Binding Width}" IsEnabled="{Binding IsImageAbsent}" Width="50"/>
+                                    <Path Data="M0,0 L8,8z M0,8 L8,0z" Width="8" Height="8" Stroke="DarkGray" StrokeThickness="1" Margin="4,0"/>
+                                    <TextBox Text="{Binding Height}" IsEnabled="{Binding IsImageAbsent}" Width="50"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="{x:Static local:Resources.Image}" Style="{StaticResource GBStyle}" Margin="0,16,0,0">
+                        <StackPanel>
+                            <Button Content="{x:Static local:Resources.LoadImage}" Tag="{StaticResource zi_photo}" Click="LoadClick" Style="{StaticResource ButtonPrimaryStyle}" Visibility="{Binding IsImageAbsent, Converter={StaticResource BooleanToVisiblilityConverter}}"/>
+                            <StackPanel Visibility="{Binding ElementName=removeBtn, Path=IsEnabled, Converter={StaticResource BooleanToVisiblilityConverter}}" d:Visibility="Visible">
+                                <Border BorderBrush="LightGray" BorderThickness="1">
+                                    <Image Source="{Binding ImagePath}"/>
+                                </Border>
+                                <Button x:Name="removeBtn" Content="{x:Static local:Resources.RemoveImage}" Command="{Binding RemoveImage}" Tag="{StaticResource zi_trash}" Style="{StaticResource ButtonDangerStyle}" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <ContentPresenter Content="{Binding ElementName=area, Path=SelectedItem}"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+        <ctrl:DragResizeBox x:Name="area" ItemsSource="{Binding Texts}" IsSynchronizedWithCurrentItem="True" Background="#F5F5F5" BorderThickness="0" ClipToBounds="True" Grid.Column="1" Grid.Row="1" FlowDirection="LeftToRight">
+            <ctrl:DragResizeBox.Template>
+                <ControlTemplate TargetType="ctrl:DragResizeBox">
+                    <ScrollViewer Focusable="False">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="32">
+                                <Grid Width="{Binding Width}" Height="{Binding Height}" ClipToBounds="False">
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="{Binding BackgroundColor, Mode=OneWay}"/>
+                                    </Grid.Background>
+                                    <Image Source="{Binding ImagePath}" Stretch="None" HorizontalAlignment="Left"/>
+                                    <ItemsPresenter/>
+                                </Grid>
+                            </Border>
+                        </Border>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ctrl:DragResizeBox.Template>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ctrl:DragResizeItem">
+                    <Setter Property="VerticalAlignment" Value="Top"/>
+                    <Setter Property="Canvas.Left" Value="{Binding X, Mode=TwoWay}"/>
+                    <Setter Property="Canvas.Top" Value="{Binding Y, Mode=TwoWay}"/>
+                    <Setter Property="Width" Value="{Binding Width, Mode=TwoWay}"/>
+                    <Setter Property="ReadOnlyHeight" Value="{Binding Height, Mode=OneWayToSource}"/>
+                    <Setter Property="ResizeMode" Value="Horizontal"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsRTL}" Value="True">
+                            <Setter Property="FlowDirection" Value="RightToLeft"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Text}"
+                               ctrl:TextBlockUtils.SmartAlignment="{Binding Alignment}"
+                               TextWrapping="Wrap"
+                               FontSize="{Binding FontSize}"
+                               FontFamily="{Binding FontName, Converter={StaticResource FontNameConverter}}">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{Binding Foreground}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ctrl:DragResizeBox>
+        <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" BorderBrush="LightGray" BorderThickness="1,0,0,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <GroupBox Header="{x:Static local:Resources.Texts}" Style="{StaticResource GBStyle}" Margin="8,8,0,8">
+                    <StackPanel Margin="8">
+                        <ctrl:TextInfoView Content="{x:Static local:Resources.ArabicText}" IsChecked="{Binding IncludeArabic}" InfoSource="{Binding Verses}" ItemsSource="{Binding Texts}"/>
+                        <ctrl:TextInfoView Content="{x:Static local:Resources.EnglishTranslation}" IsChecked="{Binding IncludeTranslation}" InfoSource="{Binding Translation}" ItemsSource="{Binding Texts}" Margin="0,16,0,0"/>
+                        <ctrl:TextInfoView Content="{x:Static local:Resources.ArabicReference}" IsReference="True" InfoSource="{Binding Reference}" ItemsSource="{Binding Texts}" d:Visibility="Visible" Margin="0,16,0,0"/>
+                        <ctrl:TextInfoView Content="{x:Static local:Resources.EnglishReference}" IsReference="True" InfoSource="{Binding EnglishReference}" ItemsSource="{Binding Texts}" d:Visibility="Visible" Margin="0,16,0,0"/>
+                    </StackPanel>
+                </GroupBox>
+            </ScrollViewer>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="2" BorderBrush="LightGray" BorderThickness="0,1,0,0">
+            <StackPanel Orientation="Horizontal" Margin="16" HorizontalAlignment="Center">
+                <Button Content="{x:Static local:Resources.Save}" Tag="{StaticResource zi_download}" Style="{StaticResource ButtonPrimaryStyle}" Width="150" Click="SaveClick"/>
+                <Button Content="{x:Static local:Resources.Copy}" Tag="{StaticResource zi_clipboard}" Style="{StaticResource ButtonSecondaryStyle}" Width="150" Margin="8,0,0,0" Click="CopyClick"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
