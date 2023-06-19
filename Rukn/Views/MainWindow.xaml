@@ -10,13 +10,13 @@
         xmlns:sys="clr-namespace:System;assembly=System.Runtime"
         xmlns:gl="clr-namespace:System.Globalization;assembly=System.Runtime"
         mc:Ignorable="d"
+        Foreground="{StaticResource TextPrimary}"
         FontFamily="{StaticResource Cairo}" FontSize="14"
         Title="Rukn - رُكن" Width="960" UseLayoutRounding="True" WindowStartupLocation="CenterScreen" WindowState="Maximized" MinHeight="700" MinWidth="960">
     <Window.DataContext>
         <vm:MainViewModel BackgroundColor="White" MinWidth="128" MinHeight="92"/>
     </Window.DataContext>
     <Window.Resources>
-        <SolidColorBrush x:Key="TextSecondary" Color="Gray"/>
         <Style TargetType="colorpicker:StandardColorPicker">
             <Setter Property="FontFamily" Value="Segoe UI"/>
             <Setter Property="FontSize" Value="12"/>
@@ -24,7 +24,7 @@
         <Style x:Key="ButtonGroupLikeStyle" TargetType="ListBox">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
             <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="ItemsPanel">
@@ -99,60 +99,6 @@
                             <Rectangle Fill="#b8ccc2" Height="1" Margin="8,0,0,0" Grid.Column="1"/>
                             <ContentPresenter Grid.Row="1" Grid.ColumnSpan="2" Margin="{TemplateBinding Padding}"/>
                         </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="ToggleStyle" TargetType="ToggleButton">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Background" Value="LightGray"/>
-            <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
-            <Setter Property="MinHeight" Value="16"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ToggleButton">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <ContentPresenter Margin="0,0,8,0"/>
-                            <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="{Binding ElementName=rec, Path=ActualHeight}" Grid.Column="1">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition MinWidth="{Binding ElementName=border, Path=ActualHeight}"/>
-                                        <ColumnDefinition MinWidth="{Binding ElementName=border, Path=ActualHeight}"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <Control x:Name="rec"/>
-                                    </Grid>
-                                    <Border x:Name="thumb" Background="White" BorderBrush="LightGray" BorderThickness="0" CornerRadius="{Binding ElementName=rec, Path=ActualHeight}">
-                                        <Border.Effect>
-                                            <DropShadowEffect x:Name="shadow" BlurRadius="4" ShadowDepth="0" Direction="0" Color="Black" Opacity=".4"/>
-                                        </Border.Effect>
-                                    </Border>
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#b8ccc2"/>
-                                <Setter TargetName="thumb" Property="Background" Value="#28664c"/>
-                                <Setter TargetName="thumb" Property="Grid.Column" Value="1"/>
-                                <Setter TargetName="thumb" Property="Effect">
-                                    <Setter.Value>
-                                        <DropShadowEffect BlurRadius="4" ShadowDepth="0" Direction="0" Color="#28664c" Opacity=".4"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#b8ccc2"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -310,7 +256,7 @@
                 <Border.Background>
                     <DrawingBrush Stretch="Fill" TileMode="Tile" Viewport="0,0,32,32" ViewportUnits="Absolute">
                         <DrawingBrush.Drawing>
-                            <GeometryDrawing Geometry="{StaticResource shape}" Brush="#09FFFFFF"/>
+                            <GeometryDrawing Geometry="{StaticResource DecorationPattern}" Brush="#09FFFFFF"/>
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Border.Background>
@@ -319,14 +265,14 @@
                 <Border.Background>
                     <DrawingBrush Stretch="Fill" TileMode="Tile" Viewport="0,0,32,32" ViewportUnits="Absolute">
                         <DrawingBrush.Drawing>
-                            <GeometryDrawing Geometry="{StaticResource shape}" Brush="#FFECD380"/>
+                            <GeometryDrawing Geometry="{StaticResource DecorationPattern}" Brush="#FFECD380"/>
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Border.Background>
                 <Border.OpacityMask>
                     <DrawingBrush Viewport="0,0,1,1">
                         <DrawingBrush.Drawing>
-                            <GeometryDrawing Geometry="{StaticResource clip}">
+                            <GeometryDrawing Geometry="{StaticResource DecorationClip}">
                                 <GeometryDrawing.Brush>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                         <GradientStop Color="Black" Offset="0"/>
@@ -341,12 +287,12 @@
                     </DrawingBrush>
                 </Border.OpacityMask>
             </Border>
-            <!-- Using 'Path' causes a weird drawing issue when Grid column width change, somehow the content go off the window -->
+            <!-- Using 'Path' causes a weird drawing issue when Grid column's width change, somehow the content go off the window -->
             <Border>
                 <Border.Background>
                     <DrawingBrush>
                         <DrawingBrush.Drawing>
-                            <GeometryDrawing Geometry="{StaticResource decoration}">
+                            <GeometryDrawing Geometry="{StaticResource DecorationBorder}">
                                 <GeometryDrawing.Brush>
                                     <LinearGradientBrush Opacity="1">
                                         <GradientStop Color="#B69154" Offset="0"/>
@@ -362,7 +308,7 @@
                     <DropShadowEffect BlurRadius="20" ShadowDepth="6" Direction="90" Color="#194030"/>
                 </Border.Effect>
             </Border>
-            <Path Data="{StaticResource hafs-asim}"
+            <Path Data="{StaticResource Hafs-an-Asim}"
                   Fill="#EBD99E"
                   Stretch="Uniform"
                   Height="30"
@@ -376,7 +322,13 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="Auto" SharedSizeGroup="col"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="{StaticResource logo}" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Path Stretch="Uniform"
+                      Fill="#f3f4f6"
+                      Data="{StaticResource Logo}"
+                      Height="40"
+                      FlowDirection="LeftToRight"
+                      VerticalAlignment="Top"
+                      HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1">
                     <Border Background="#28664c" CornerRadius="10" Padding="5" ClipToBounds="True">
                         <StackPanel Orientation="Horizontal">
@@ -439,7 +391,7 @@
                 </Border>
             </Grid>
         </Grid>
-        <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderBrush="LightGray" BorderThickness="0,0,1,0">
+        <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,1,0">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Width="260" Margin="8,8,0,8">
                     <GroupBox Header="{x:Static local:Resources.Board}" Style="{StaticResource GBStyle}">
@@ -460,7 +412,7 @@
                                 <TextBlock Text="{x:Static local:Resources.Size}" Foreground="{StaticResource TextSecondary}" Grid.Row="2"/>
                                 <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
                                     <TextBox Text="{Binding Width}" IsEnabled="{Binding IsImageAbsent}" Width="50"/>
-                                    <Path Data="M0,0 L8,8z M0,8 L8,0z" Width="8" Height="8" Stroke="DarkGray" StrokeThickness="1" Margin="4,0"/>
+                                    <Path Data="M0,0 L8,8z M0,8 L8,0z" Width="8" Height="8" Stroke="{StaticResource TextDisabled}" StrokeThickness="1" Margin="4,0"/>
                                     <TextBox Text="{Binding Height}" IsEnabled="{Binding IsImageAbsent}" Width="50"/>
                                 </StackPanel>
                             </Grid>
@@ -481,12 +433,12 @@
                 </StackPanel>
             </ScrollViewer>
         </Border>
-        <ctrl:DragResizeBox x:Name="area" ItemsSource="{Binding Texts}" IsSynchronizedWithCurrentItem="True" Background="#F5F5F5" BorderThickness="0" ClipToBounds="True" Grid.Column="1" Grid.Row="1" FlowDirection="LeftToRight">
+        <ctrl:DragResizeBox x:Name="area" ItemsSource="{Binding Texts}" IsSynchronizedWithCurrentItem="True" Background="{StaticResource Control.Background}" BorderThickness="0" ClipToBounds="True" Grid.Column="1" Grid.Row="1" FlowDirection="LeftToRight">
             <ctrl:DragResizeBox.Template>
                 <ControlTemplate TargetType="ctrl:DragResizeBox">
                     <ScrollViewer Focusable="False">
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <Border BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="32">
+                            <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="32">
                                 <Grid Width="{Binding Width}" Height="{Binding Height}" ClipToBounds="False">
                                     <Grid.Background>
                                         <SolidColorBrush Color="{Binding BackgroundColor, Mode=OneWay}"/>
@@ -533,7 +485,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ctrl:DragResizeBox>
-        <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" BorderBrush="LightGray" BorderThickness="1,0,0,0">
+        <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1,0,0,0">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <GroupBox Header="{x:Static local:Resources.Texts}" Style="{StaticResource GBStyle}" Margin="8,8,0,8">
                     <StackPanel Margin="8">
@@ -545,7 +497,7 @@
                 </GroupBox>
             </ScrollViewer>
         </Border>
-        <Border Grid.Column="1" Grid.Row="2" BorderBrush="LightGray" BorderThickness="0,1,0,0">
+        <Border Grid.Column="1" Grid.Row="2" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0">
             <StackPanel Orientation="Horizontal" Margin="16" HorizontalAlignment="Center">
                 <Button Content="{x:Static local:Resources.Save}" Tag="{StaticResource zi_download}" Style="{StaticResource ButtonPrimaryStyle}" Width="150" Click="SaveClick"/>
                 <Button Content="{x:Static local:Resources.Copy}" Tag="{StaticResource zi_clipboard}" Style="{StaticResource ButtonSecondaryStyle}" Width="150" Margin="8,0,0,0" Click="CopyClick"/>

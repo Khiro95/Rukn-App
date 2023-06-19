@@ -15,12 +15,14 @@
             <FontFamily x:Key="UthmanicHafs">pack://application:,,,/Fonts/#KFGQPC HAFS Uthmanic Script</FontFamily>
             <FontFamily x:Key="Bitter">pack://application:,,,/Fonts/#Bitter Pro</FontFamily>
             <FontFamily x:Key="Cairo">pack://application:,,,/Fonts/#Cairo</FontFamily>
+            
             <BooleanToVisibilityConverter x:Key="BooleanToVisiblilityConverter"/>
             <converters:StringToResourceConverter x:Key="StringToResourceConverter"/>
             <converters:FontSizeConverter x:Key="FontSizeConverter"/>
             <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
             <converters:FontNameConverter x:Key="FontNameConverter"/>
             <converters:BorderClipConverter x:Key="BorderClipConverter"/>
+            
             <ObjectDataProvider x:Key="ReferenceModeEnum"
                                 MethodName="GetValues"
                                 ObjectType="{x:Type sys:Enum}">
@@ -29,19 +31,52 @@
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
 
-            <DrawingImage x:Key="logo">
-                <DrawingImage.Drawing>
-                    <DrawingGroup>
-                        <GeometryDrawing Brush="#f3f4f6" Geometry="m 1518.512,-567.759 -93.7277,93.72768 h -132.5446 v 132.54464 l -93.7277,93.72768 45.7143,45.71429 c 20.8622,3.47702 39.6839,7.31582 57.221,11.50669 l -57.221,-57.22098 274.2857,-274.28571 274.2857,274.28571 -57.2209,57.22098 c 17.5371,-4.19087 36.3587,-8.02967 57.2209,-11.50669 l 45.7143,-45.71429 -93.7276,-93.72768 v -132.54464 h -132.5447 z m -193.9509,126.04911 h 67.9018 l -67.9018,67.90178 z m 320,0 h 67.9018 v 67.90178 z m -80.3348,56.80803 c -25.2472,0 -45.7143,20.46708 -45.7143,45.71429 0,25.2472 20.4671,45.71428 45.7143,45.71428 25.2472,0 45.7143,-20.46708 45.7143,-45.71428 0,-25.24721 -20.4671,-45.71429 -45.7143,-45.71429 z m -137.1429,91.42857 -107.5334,107.53348 c 78.1954,21.10665 128.378,51.4106 198.962,98.180809 56.4266,-37.389209 99.7493,-64.263669 154.7991,-84.330349 l -63.3705,-52.81251 -91.4286,45.71429 z m -205.7142,137.14286 -22.8572,91.428569 c 131.8144,33.79715 205.7144,45.7144 320,137.14286 114.2856,-91.42846 240.8482,-123.80651 320,-137.14286 l -22.8571,-91.428569 c -126.6131,21.10217 -206.2948,54.08817 -297.1429,114.285719 -90.8481,-60.197549 -170.5298,-93.183549 -297.1428,-114.285719 z"/>
-                        <GeometryDrawing Brush="#f3f4f6" Geometry="m 608.03668,-553.2016 c -1.52843,-0.0246 -2.92169,0.53208 -4.19714,1.58182 -10.34753,8.5392 -12.31113,48.29846 -17.30597,73.34838 -2.47037,-23.75321 -13.59034,-61.97446 -37.90997,-64.9915 -0.58036,0.30757 -1.02234,0.74441 -1.31508,1.27926 l -5.48441,10.22906 c -2.1334,4.05937 1.17296,12.80501 16.09076,15.65012 l 3.53304,-4.97403 c 10.3609,12.61701 17.5915,32.92968 22.00752,54.25434 -2.1352,3.71097 -4.69569,7.92323 -7.32768,11.25893 -14.5868,20.92299 -39.41572,43.2493 -52.8069,52.49786 -28.48936,20.2603 -42.03548,25.83643 -61.78179,35.28893 -4.46248,2.17324 -25.26939,12.32906 -14.79139,9.38532 l 1.64872,-0.49231 c 7.43811,-2.00121 16.48308,-5.11931 23.69575,-7.47505 32.03132,-10.63261 47.17579,-15.67702 69.75007,-33.94642 9.35093,-7.96266 28.22817,-29.10284 38.42161,-49.91347 3.30789,-5.67538 5.16884,-11.07543 6.59101,-16.23942 l 1.42955,-6.1419 c 0.43891,-1.63122 0.61261,-2.52781 0.56923,-2.86109 5.59913,-22.11472 4.96898,-54.92757 13.49896,-61.34992 3.42875,-2.5894 8.46239,-1.1491 16.28338,6.59179 l 4.06192,-9.91715 c -5.96503,-9.14133 -10.75501,-13.00106 -14.66119,-13.06355 z m -396.28709,29.12187 c -6.88709,0.0477 -13.76251,0.54272 -20.07355,1.59476 l -18.07214,30.20925 c 25.23389,-5.08002 51.30003,-2.66824 64.32601,1.63932 -4.93353,3.74515 -10.58731,7.19551 -17.17512,10.52661 -9.35148,4.60109 -18.70813,8.91923 -31.49434,13.71182 -10.3307,4.04361 -13.1734,4.96063 -18.76556,6.97412 l -0.46716,0.15955 c -6.09019,2.14445 7.35037,-0.59518 18.90076,-1.99076 13.0012,-1.20796 27.5908,-2.81345 32.33142,-4.47743 8.11583,-3.30848 18.30301,-15.39309 22.44603,-22.37124 l 14.33132,-25.43286 c 0.36076,-0.62535 0.71859,-1.25557 1.06949,-1.89806 -5.93152,-4.90986 -26.69586,-8.78826 -47.35716,-8.64508 z m 183.0487,52.9643 c -44.42866,-0.22242 -144.20831,53.6963 -178.89037,83.44664 -36.84119,32.35209 -64.06929,66.01649 -59.24063,106.64656 3.70912,27.40443 59.23159,29.24461 77.49745,30.7461 124.45422,3.95813 281.56696,-18.98447 347.02685,-16.53841 52.08971,0.97569 88.44858,40.4837 88.67944,51.4989 -1.35207,1.3923 -2.59262,2.02434 -4.03176,2.78276 -5.53961,2.70359 -16.87096,4.74495 -37.14534,7.18829 -163.63268,19.72004 -318.96541,25.88432 -449.17743,25.70598 -20.53321,-0.36799 -44.56119,-0.12438 -62.22169,-10.61645 -7.62016,-4.52105 -13.07394,-9.56924 -18.023165,-14.82935 -4.83702,-5.55796 -8.98825,-9.90797 -17.05441,-22.89807 l -7.153839,40.57127 c 0.54322,1.11624 1.09229,2.15471 1.64511,3.12914 19.489719,37.48526 26.861764,69.12313 30.546254,96.541836 0.17273,1.33225 0.31153,2.75625 0.43628,4.20935 -0.47911,0.65254 -0.9037,1.21904 -1.45026,1.97926 -3.25268,4.20724 -9.722955,11.62667 -23.116655,22.06869 -52.757949,40.58052 -108.198509,68.72328 -169.191609,77.1416 -45.056436,4.47764 -66.002556,-6.55136 -78.743566,-16.68213001 -20.28606,-14.38659999 -39.45953,-53.49504999 -32.40762,-99.18657999 3.9127,-26.893886 12.536,-46.558266 13.36961,-51.634726 l 0.29039,-1.64939 c 3.0321,-18.72174 -17.78759,30.26042 -21.89333,52.552476 -14.66093,72.78473 13.47891,118.88994 38.56319,137.60613 17.12239,13.10063 39.15872,22.26425 80.821326,17.9348 57.59913,-8.56652 115.07463,-36.58481 167.832589,-77.16533 31.623955,-24.72377 34.498625,-46.86663 36.737155,-65.45721 0.336,-3.84606 0.48898,-6.39821 0.49372,-8.14702 0.92637,-16.981236 -0.65727,-35.791576 -5.46994,-56.172496 17.5025,8.51436 39.82029,8.70544 59.22908,9.05327 130.21203,0.17834 285.54406,-5.98593 449.17674,-25.70597 20.27425,-2.44332 31.6056,-4.4847 37.1452,-7.18828 7.21365,-3.46467 14.0643,-22.30774 18.70883,-32.67363 24.7961,-59.71777 -37.74253,-97.33053 -89.8321,-98.3062 -65.32707,-2.3434 -216.01693,22.25372 -340.47115,18.2956 -18.70368,-0.29808 -66.96161,-3.71149 -76.78443,-23.98185 -2.88982,-7.62436 15.69481,-29.20936 44.65842,-49.23574 46.62979,-32.99486 141.0708,-84.10979 174.04864,-74.49972 9.09296,2.64589 9.99012,17.67199 13.13542,6.52854 l 5.53461,-19.62876 c 3.67239,-12.97834 0.11825,-21.49592 -5.16452,-22.64004 -2.43422,-0.51929 -5.15062,-0.77502 -8.11249,-0.78984 z m -410.179344,69.33668 c -6.88709,0.0477 -13.76333,0.54271 -20.07438,1.59476 l -18.07131,30.20998 c 25.2342,-5.08013 51.3010199,-2.66911 64.32671,1.63859 -4.9336601,3.74539 -10.58772009,7.19534 -17.1759501,10.52662 -9.3513499,4.60107 -18.7079999,8.91921 -31.4941999,13.71179 -10.33071,4.04363 -13.17408,4.96134 -18.76641,6.97485 l -0.46714,0.15954 c -6.09007,2.14446 7.35118,-0.59588 18.90144,-1.99146 13.00121,-1.20797 27.5908,-2.81274 32.3315699,-4.47671 8.11581,-3.30848 18.3030001,-15.39381 22.4460201,-22.37196 l 14.30045,-25.37898 c 0.37134,-0.6427 0.73876,-1.29111 1.09952,-1.95195 -5.93137,-4.90985 -26.6950201,-8.78826 -47.35632,-8.64507 z M 1030.2842,-390.1346 c -6.9604,-0.002 -17.3531,6.3812 -23.0116,16.40616 -2.778,4.73505 -6.7756,13.91982 0.2695,20.50915 2.143,1.97283 7.7198,5.77932 13.6019,9.82012 -7.9897,9.41163 -20.3772,21.37753 -34.29281,32.38544 -28.50539,22.1033 -56.64889,40.62265 -76.68099,53.28195 -7.0765,4.46237 -26.4599,14.20222 -16.9079,10.7889 l 3.1278,-1.21526 c 7.3651,-2.6459 15.8681,-6.52416 25.0247,-11.07354 25.9306,-12.85691 56.7262,-32.42942 79.3314,-54.02794 10.5933,-9.21206 18.75,-18.71694 24.7026,-27.15771 0.6942,0.48213 1.4086,0.96915 2.0851,1.44455 4.1942,2.95006 13.3435,8.28124 9.1913,21.31048 -7.2022,19.35166 -16.1803,44.10374 -2.9547,61.1523 6.0978,8.05069 20.1301,6.00514 22.2577,-15.31521 0.3228,-5.50931 0.2265,-8.42787 0.017,-10.98512 l -0.1117,-1.17219 c -0.4659,-5.30757 0.066,2.58204 -1.7578,8.67456 -2.3723,7.43851 -10.7374,12.28435 -16.6018,6.19651 -10.6511,-11.17292 -5.6708,-27.4631 2.2453,-48.61121 9.9993,-24.90351 -0.646,-30.42686 -3.9112,-33.21193 -0.8985,-0.63149 -1.8431,-1.27704 -2.7698,-1.91888 0.5889,-1.11963 1.1396,-2.20656 1.6178,-3.22476 8.576,-19.26436 6.1254,-29.0693 -0.304,-33.00063 -1.1404,-0.71444 -2.5635,-1.05517 -4.1698,-1.05574 z m -8.6364,12.64815 c 2.7405,0.0156 5.0098,1.25999 5.9637,2.37383 2.3715,2.64021 5.1804,10.39604 2.2638,19.03439 -0.095,0.23726 -0.2059,0.4856 -0.3235,0.73955 -5.8943,-4.04939 -11.4863,-7.86585 -13.6335,-9.84241 -1.8891,-1.81076 -4.0543,-4.69961 -3.0601,-7.30545 2.8379,-3.80242 6.0492,-5.01543 8.7896,-4.99991 z m -192.3039,4.82455 c -1.5286,-0.0245 -2.9218,0.53281 -4.1973,1.58254 -10.3474,8.53903 -12.3121,48.29622 -17.3066,73.34622 -2.4706,-23.75334 -13.5903,-61.97308 -37.90924,-64.99006 -0.5803,0.30758 -1.0224,0.7444 -1.3153,1.27927 l -5.4849,10.22906 c -2.1335,4.05937 1.1737,12.80499 16.0915,15.6501 l 3.533,-4.97402 c 10.40644,12.67238 17.65674,33.10741 22.06714,54.53463 l 3.5598,-2.92938 c 7.5816,-21.6217 5.9363,-60.30635 15.2777,-67.33945 3.4288,-2.58939 8.4624,-1.14839 16.2834,6.59251 l 4.0619,-9.91716 c -5.965,-9.14133 -10.755,-13.00177 -14.6611,-13.06426 z m -973.06657,29.11971 c -0.21626,-0.0325 -0.49024,0.59206 -0.76253,2.04682 l 0.0138,-0.0782 c -1.07017,5.32929 -4.28933,14.10957 -6.27266,19.68049 -5.62208,14.71924 -11.83884,30.92344 -12.51808,42.73813 -1.02401,11.26004 2.14397,20.771 8.41288,27.10739 4.51992,4.57222 10.71957,5.17871 17.38137,-0.81714 4.36762,-4.37426 7.78676,-12.30702 8.61634,-20.7262 0.87297,-4.57414 0.37662,-10.81524 0.0917,-12.73439 l 0.0724,0.59147 c -0.85613,-6.28056 0.0502,-0.93586 -2.85895,7.80421 -2.51989,6.7625 -6.1888,8.71458 -7.79844,9.44857 -3.13905,1.45219 -7.86953,1.93069 -11.48532,-2.06694 -5.01431,-5.69321 -4.76176,-14.56064 -3.97293,-21.7187 1.11969,-9.5967 7.12033,-27.11241 9.89055,-37.88841 1.97069,-7.27552 1.83786,-13.28947 1.18865,-13.38696 z m 83.974986,119.04676 -16.16335,34.66224 c 10.38426,5.22267 25.96712,12.84071 36.56541,19.03009 l 16.16321,-34.66223 c -10.59828,-6.18938 -26.18114,-13.80741 -36.56527,-19.0301 z M 835.761,-208.46944 c -6.2908,-0.2131 -17.9675,6.48541 -25.4632,25.12959 -1.055,2.89829 -2.7308,7.29555 -3.8204,11.84681 l -0.7202,2.93656 c -1.3246,6.74984 3.0243,-3.82022 5.5972,-6.54004 8.9864,-12.07867 19.074,-11.33587 22.6688,-6.94467 6.4303,9.32078 3.0571,30.10686 -15.4927,53.53564 -5.4301,6.70835 -16.1168,21.07091 -8.9664,14.33348 l 1.6258,-1.54589 c 6.3648,-6.06969 9.4287,-9.68073 14.9421,-16.4651 29.304,-35.67454 25.628,-71.43134 11.3977,-76.00393 -0.5249,-0.16441 -1.118,-0.2604 -1.7687,-0.28245 z m 185.0021,33.04231 c -38.39241,0.0848 -83.8879,34.26774 -116.5824,67.67941 -21.8933,21.687096 -71.7561,83.714666 -110.695,106.390676 -31.52524,17.99242 -62.12784,11.58145 -73.10974,-16.95236 -6.4334,-16.37852 -8.1023,-31.50524 -3.1586,-58.10505 5.8888,-30.572416 22.8308,-61.461686 27.8082,-73.586276 l 1.1153,-2.81006 c 6.3606,-20.87337 -27.933,34.46632 -36.6673,85.034946 -3.5502,27.48238 -3.2317,47.04611 4.476,69.23821 12.5275,35.589 45.7868,54.00731 77.71064,36.03132 40.9125,-22.59035 89.9481,-84.61948 111.8413,-106.3066 36.4624,-41.659116 96.46049,-83.621276 137.8685,-62.127536 25.3062,12.23745 29.4252,22.36288 29.0593,11.36314 l 0.083,-2.78635 c -1.1842,-35.55501 -12.5143,-40.1929 -24.5481,-47.2457 -7.8588,-4.04069 -16.3403,-5.83733 -25.2001,-5.81777 z m -709.31881,88.136076 c -9.94216,0.0717 -27.03284,2.17262 -35.66476,10.78245 l -5.3737,5.77824 c -8.69867,8.77159 22.34186,19.28399 36.17363,24.81263 15.31277,6.81201 35.67325,14.49623 31.51729,26.58348 -2.17916,0.75805 -6.39896,-1.7383 -33.74873,-14.49734 -16.16349,-7.65672 -39.78887,-16.94045 -51.12301,-29.6465 -9.32367,-10.89833 -5.84236,-19.49333 -7.24145,-13.77507 l -0.72735,3.2082 c -1.91313,7.89676 -1.21273,13.83943 2.38886,18.88349 7.46328,11.90496 26.73063,17.59029 46.12176,27.62486 35.91301,15.16647 35.74805,22.93623 47.36786,9.29907 14.60183,-15.34064 -6.81992,-26.92725 -26.03011,-34.89436 -13.7817,-6.67962 -36.9263,-12.88927 -39.15984,-21.65546 10.32405,-5.45085 26.26778,-5.61439 35.71942,-4.73038 7.31307,0.99136 13.20371,2.68676 15.71122,6.21592 2.62418,3.8158 0.57771,8.0414 1.6077,6.68521 l 0.0348,-0.0468 2.92084,-3.86007 0.0946,-0.12362 c 3.20163,-4.22865 3.31595,-7.98918 2.02812,-9.94015 -2.31072,-3.7998 -9.19226,-5.48378 -16.28976,-6.38553 -1.32024,-0.19987 -3.54347,-0.33844 -6.32732,-0.31836 z m 225.09752,0.002 c -6.29076,-0.21308 -17.96687,6.48541 -25.46228,25.1296 -1.05544,2.89828 -2.73114,7.29553 -3.82051,11.8468 l -0.72013,2.93657 c -1.32482,6.74982 3.02404,-3.82022 5.59705,-6.54005 8.98628,-12.07866 19.07319,-11.33587 22.66813,-6.94466 6.43037,9.32079 3.05783,30.10687 -15.49205,53.53564 -5.43,6.70832999 -16.11745,21.0709 -8.96708,14.33348 l 1.62648,-1.54588 c 6.36487,-6.06971001 9.42867,-9.68076 14.94213,-16.46512 29.30392,-35.67453 25.62819,-71.43133 11.3977,-76.00393 -0.52487,-0.1644 -1.11872,-0.26039 -1.76944,-0.28245 z m 467.03759,17.46768 c -0.2165,-0.0325 -0.4904,0.59276 -0.7627,2.04753 l 0.015,-0.079 c -1.0704,5.32931 -4.28941,14.10957 -6.27291,19.68049 -5.6219,14.71925 -11.8393,30.92346 -12.5187,42.73812 -1.0239,11.26006 2.1449,20.771 8.4137,27.1074 4.52,4.57221 10.71881,5.1787 17.38071,-0.81714 4.3675,-4.37425 7.7875,-12.30703 8.6171,-20.72619001 0.8728,-4.57412999 0.3757,-10.81526999 0.091,-12.73439999 l 0.072,0.59148 c -0.856,-6.28058 0.05,-0.93585 -2.8581,7.80421 -2.5199,6.76249 -6.1897,8.7153 -7.7992,9.44928 -3.1389,1.4522 -7.8694,1.9307 -11.48531,-2.06694 -5.0142,-5.6932 -4.7616,-14.56136 -3.9729,-21.71941 1.1198,-9.59671 7.1209,-27.11241 9.89131,-37.88841 1.9706,-7.27552 1.8371,-13.28949 1.188,-13.38697 z"/>
-                    </DrawingGroup>
-                </DrawingImage.Drawing>
-            </DrawingImage>
-            
+            <Color x:Key="Color.Accent">#28664c</Color>
+            <Color x:Key="Color.Accent.Light">#b8ccc2</Color>
+            <Color x:Key="Color.Accent.Dark">#194030</Color>
+
+            <SolidColorBrush x:Key="Brush.Accent" Color="{StaticResource Color.Accent}"/>
+            <SolidColorBrush x:Key="Brush.Accent.Light" Color="{StaticResource Color.Accent.Light}"/>
+            <SolidColorBrush x:Key="Brush.Accent.Dark" Color="{StaticResource Color.Accent.Dark}"/>
+
+            <SolidColorBrush x:Key="TextPrimary" Color="#1f2937"/>
+            <SolidColorBrush x:Key="TextSecondary" Color="#6b7280"/>
+            <SolidColorBrush x:Key="TextDisabled" Color="#9ca3af"/>
+            <SolidColorBrush x:Key="BorderBrush" Color="#d4d4d4"/>
+            <SolidColorBrush x:Key="Control.Background" Color="#f5f5f5"/>
+
+            <Color x:Key="Color.Button.Background">#28664c</Color>
+            <Color x:Key="Color.Button.Foreground">#ffffff</Color>
+            <Color x:Key="Color.Button.BorderBrush">#00000000</Color>
+            <Color x:Key="Color.Button.Hover.Background">#194030</Color>
+            <Color x:Key="Color.Button.Pressed.Background">#ffffff</Color>
+            <Color x:Key="Color.Button.Pressed.Foreground">#28664c</Color>
+            <Color x:Key="Color.Button.Pressed.BorderBrush">#28664c</Color>
+
+            <Color x:Key="Color.Button.Secondary.Background">#e5e7eb</Color>
+            <Color x:Key="Color.Button.Secondary.Foreground">#6b7280</Color>
+            <Color x:Key="Color.Button.Secondary.Hover.Background">#d1d5db</Color>
+            <Color x:Key="Color.Button.Secondary.Pressed.Foreground">#6b7280</Color>
+            <Color x:Key="Color.Button.Secondary.Pressed.BorderBrush">#6b7280</Color>
+
+            <Color x:Key="Color.Button.Danger.Background">#b91c1c</Color>
+            <Color x:Key="Color.Button.Danger.Foreground">#ffffff</Color>
+            <Color x:Key="Color.Button.Danger.Hover.Background">#7f1d1d</Color>
+            <Color x:Key="Color.Button.Danger.Pressed.Foreground">#b91c1c</Color>
+            <Color x:Key="Color.Button.Danger.Pressed.BorderBrush">#b91c1c</Color>
+
+            <SolidColorBrush x:Key="Button.Background" Color="{StaticResource Color.Button.Background}"/>
+            <SolidColorBrush x:Key="Button.Foreground" Color="{StaticResource Color.Button.Foreground}"/>
+            <SolidColorBrush x:Key="Button.BorderBrush" Color="{StaticResource Color.Button.BorderBrush}"/>
+            <SolidColorBrush x:Key="Button.Hover.Background" Color="{StaticResource Color.Button.Hover.Background}"/>
+            <SolidColorBrush x:Key="Button.Pressed.Background" Color="{StaticResource Color.Button.Pressed.Background}"/>
+            <SolidColorBrush x:Key="Button.Pressed.Foreground" Color="{StaticResource Color.Button.Pressed.Foreground}"/>
+            <SolidColorBrush x:Key="Button.Pressed.BorderBrush" Color="{StaticResource Color.Button.Pressed.BorderBrush}"/>
+
             <Style x:Key="ButtonPrimaryStyle" TargetType="Button">
-                <Setter Property="Background" Value="#28664c"/>
-                <Setter Property="Foreground" Value="White"/>
-                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Background" Value="{DynamicResource Button.Background}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Button.Foreground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Button.BorderBrush}"/>
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="Padding" Value="11,6"/>
                 <Setter Property="FontWeight" Value="DemiBold"/>
@@ -74,45 +109,108 @@
                 </Setter>
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#194030"/>
+                        <Setter Property="Background" Value="{DynamicResource Button.Hover.Background}"/>
                     </Trigger>
                     <Trigger Property="IsPressed" Value="True">
                         <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="Foreground" Value="#28664c"/>
-                        <Setter Property="BorderBrush" Value="#28664c"/>
-                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Foreground" Value="{DynamicResource Button.Pressed.Foreground}"/>
+                        <Setter Property="BorderBrush" Value="{DynamicResource Button.Pressed.BorderBrush}"/>
+                        <Setter Property="Background" Value="{DynamicResource Button.Pressed.Background}"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
             <Style x:Key="ButtonSecondaryStyle" TargetType="Button" BasedOn="{StaticResource ButtonPrimaryStyle}">
-                <Setter Property="Background" Value="#e5e7eb"/>
-                <Setter Property="Foreground" Value="#6b7280"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#d1d5db"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="True">
-                        <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="Foreground" Value="#6b7280"/>
-                        <Setter Property="BorderBrush" Value="#6b7280"/>
-                        <Setter Property="Background" Value="White"/>
-                    </Trigger>
-                </Style.Triggers>
+                <Style.Resources>
+                    <SolidColorBrush x:Key="Button.Background" Color="{StaticResource Color.Button.Secondary.Background}"/>
+                    <SolidColorBrush x:Key="Button.Foreground" Color="{StaticResource Color.Button.Secondary.Foreground}"/>
+                    <SolidColorBrush x:Key="Button.Hover.Background" Color="{StaticResource Color.Button.Secondary.Hover.Background}"/>
+                    <SolidColorBrush x:Key="Button.Pressed.Foreground" Color="{StaticResource Color.Button.Secondary.Pressed.Foreground}"/>
+                    <SolidColorBrush x:Key="Button.Pressed.BorderBrush" Color="{StaticResource Color.Button.Secondary.Pressed.BorderBrush}"/>
+                </Style.Resources>
             </Style>
             <Style x:Key="ButtonDangerStyle" TargetType="Button" BasedOn="{StaticResource ButtonPrimaryStyle}">
-                <Setter Property="Background" Value="#b91c1c"/>
-                <Setter Property="Foreground" Value="White"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#7f1d1d"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="True">
-                        <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="Foreground" Value="#b91c1c"/>
-                        <Setter Property="BorderBrush" Value="#b91c1c"/>
-                        <Setter Property="Background" Value="White"/>
-                    </Trigger>
-                </Style.Triggers>
+                <Style.Resources>
+                    <SolidColorBrush x:Key="Button.Background" Color="{StaticResource Color.Button.Danger.Background}"/>
+                    <SolidColorBrush x:Key="Button.Foreground" Color="{StaticResource Color.Button.Danger.Foreground}"/>
+                    <SolidColorBrush x:Key="Button.Hover.Background" Color="{StaticResource Color.Button.Danger.Hover.Background}"/>
+                    <SolidColorBrush x:Key="Button.Pressed.Foreground" Color="{StaticResource Color.Button.Danger.Pressed.Foreground}"/>
+                    <SolidColorBrush x:Key="Button.Pressed.BorderBrush" Color="{StaticResource Color.Button.Danger.Pressed.BorderBrush}"/>
+                </Style.Resources>
+            </Style>
+
+            <Style x:Key="ToggleStyle" TargetType="ToggleButton">
+                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                <Setter Property="Background" Value="{StaticResource Control.Background}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+                <Setter Property="MinHeight" Value="16"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Grid Background="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter Margin="0,0,8,0"/>
+                                <Border x:Name="root" Background="{TemplateBinding Background}" CornerRadius="{Binding ElementName=rec, Path=ActualHeight}" Grid.Column="1">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition MinWidth="{Binding ElementName=root, Path=ActualHeight}"/>
+                                            <ColumnDefinition MinWidth="{Binding ElementName=root, Path=ActualHeight}"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Control x:Name="rec"/>
+                                        </Grid>
+                                        <Rectangle x:Name="border" Stroke="{StaticResource BorderBrush}" StrokeThickness="1" RadiusX="{Binding ElementName=rec, Path=ActualHeight}" RadiusY="{Binding ElementName=rec, Path=ActualHeight}" Grid.ColumnSpan="2"/>
+                                        <Ellipse x:Name="thumb" Fill="White" Stroke="{StaticResource BorderBrush}" StrokeThickness="1" Margin="1"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="root" Property="Background" Value="{StaticResource Brush.Accent}"/>
+                                    <Setter TargetName="border" Property="Stroke" Value="Transparent"/>
+                                    <Setter TargetName="thumb" Property="Fill" Value="White"/>
+                                    <Setter TargetName="thumb" Property="Stroke" Value="Transparent"/>
+                                    <Setter TargetName="thumb" Property="Margin" Value="2"/>
+                                    <Setter TargetName="thumb" Property="Grid.Column" Value="1"/>
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsMouseOver" Value="True"/>
+                                        <Condition Property="IsChecked" Value="False"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="border" Property="Stroke" Value="{StaticResource Brush.Accent}"/>
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsEnabled" Value="False"/>
+                                        <Condition Property="IsChecked" Value="False"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="thumb" Property="Fill" Value="{StaticResource BorderBrush}"/>
+                                    <Setter TargetName="thumb" Property="Stroke" Value="Transparent"/>
+                                    <Setter TargetName="thumb" Property="Margin" Value="2"/>
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsEnabled" Value="False"/>
+                                        <Condition Property="IsChecked" Value="True"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="root" Property="Background" Value="{StaticResource Brush.Accent.Light}"/>
+                                    <Setter TargetName="thumb" Property="Stroke" Value="Transparent"/>
+                                    <Setter TargetName="thumb" Property="Margin" Value="2"/>
+                                </MultiTrigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="{StaticResource TextDisabled}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
 
             <Style x:Key="FocusVisual">
@@ -124,13 +222,21 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+            <SolidColorBrush x:Key="ComboBoxItem.Background" Color="Transparent"/>
+            <SolidColorBrush x:Key="ComboBoxItem.BorderBrush" Color="Transparent"/>
+            <SolidColorBrush x:Key="ComboBoxItem.Hover.Background" Color="#f3f4f6"/>
+            <SolidColorBrush x:Key="ComboBoxItem.Selected.Background" Color="#28664c"/>
+            <SolidColorBrush x:Key="ComboBoxItem.Selected.Foreground" Color="#ffffff"/>
+            <SolidColorBrush x:Key="ComboBoxItem.Disabled.Foreground" Color="#9ca3af"/>
+
             <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
                 <Setter Property="SnapsToDevicePixels" Value="True"/>
                 <Setter Property="Padding" Value="8,3"/>
                 <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
                 <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-                <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Background" Value="{StaticResource ComboBoxItem.Background}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ComboBoxItem.BorderBrush}"/>
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
                 <Setter Property="Template">
@@ -141,25 +247,25 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                    <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{StaticResource ComboBoxItem.Disabled.Foreground}"/>
                                 </Trigger>
                                 <MultiTrigger>
                                     <MultiTrigger.Conditions>
                                         <Condition Property="IsSelected" Value="False"/>
                                         <Condition Property="IsMouseOver" Value="True"/>
                                     </MultiTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="Bd" Value="#f3f4f6"/>
+                                    <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.Hover.Background}"/>
                                 </MultiTrigger>
                                 <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" TargetName="Bd" Value="#28664c"/>
-                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.Selected.Background}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource ComboBoxItem.Selected.Foreground}"/>
                                 </Trigger>
                                 <MultiTrigger>
                                     <MultiTrigger.Conditions>
                                         <Condition Property="IsSelected" Value="False"/>
                                         <Condition Property="IsKeyboardFocused" Value="True"/>
                                     </MultiTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="Bd" Value="#f3f4f6"/>
+                                    <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.Hover.Background}"/>
                                 </MultiTrigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -182,6 +288,22 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+            <SolidColorBrush x:Key="ComboBox.Background" Color="#e5e7eb"/>
+            <SolidColorBrush x:Key="ComboBox.Foreground" Color="#4b5563"/>
+            <SolidColorBrush x:Key="ComboBox.BorderBrush" Color="#e5e7eb"/>
+            <SolidColorBrush x:Key="ComboBox.Hover.Background" Color="#f3f4f6"/>
+            <SolidColorBrush x:Key="ComboBox.Open.Background" Color="#ffffff"/>
+            <SolidColorBrush x:Key="ComboBox.Open.BorderBrush" Color="#e5e7eb"/>
+            <SolidColorBrush x:Key="ComboBox.Popup.Background" Color="#ffffff"/>
+            <SolidColorBrush x:Key="ComboBox.Popup.BorderBrush" Color="#e5e7eb"/>
+            <SolidColorBrush x:Key="ComboBox.TextBox.Background" Color="#ffffff"/>
+            <SolidColorBrush x:Key="ComboBox.TextBox.Focused.Foreground" Color="#000000"/>
+            <SolidColorBrush x:Key="ComboBox.Editable.BorderBrush" Color="#d1d5db"/>
+            <SolidColorBrush x:Key="ComboBox.Disabled.Foreground" Color="#9ca3af"/>
+            <SolidColorBrush x:Key="ComboBox.Disabled.Background" Color="#d1d5db"/>
+            <SolidColorBrush x:Key="ComboBox.Disabled.BorderBrush" Color="#d1d5db"/>
+
             <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
                 <Setter Property="OverridesDefaultStyle" Value="true"/>
                 <Setter Property="IsTabStop" Value="false"/>
@@ -204,32 +326,30 @@
                                         <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
                                         <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="true"/>
                                     </MultiDataTrigger.Conditions>
-                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="#d1d5db"/>
+                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource ComboBox.Editable.BorderBrush}"/>
                                 </MultiDataTrigger>
                                 <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true">
-                                    <Setter Property="Background" TargetName="templateRoot" Value="#f3f4f6"/>
+                                    <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ComboBox.Hover.Background}"/>
                                 </DataTrigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
                                         <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false"/>
                                     </MultiDataTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="templateRoot" Value="Gray"/>
-                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="DarkGray"/>
+                                    <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ComboBox.Disabled.Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource ComboBox.Disabled.BorderBrush}"/>
                                 </MultiDataTrigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
                                         <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
                                     </MultiDataTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="templateRoot" Value="Gray"/>
-                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="DarkGray"/>
-                                    <Setter Property="Background" TargetName="splitBorder" Value="Gray"/>
-                                    <Setter Property="BorderBrush" TargetName="splitBorder" Value="DarkGray"/>
+                                    <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ComboBox.Disabled.Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource ComboBox.Disabled.BorderBrush}"/>
                                 </MultiDataTrigger>
                                 <DataTrigger Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="True">
-                                    <Setter TargetName="templateRoot" Property="Background" Value="White"/>
-                                    <Setter TargetName="templateRoot" Property="BorderBrush" Value="#e5e7eb"/>
+                                    <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Open.Background}"/>
+                                    <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Open.BorderBrush}"/>
                                 </DataTrigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -244,7 +364,7 @@
                     </Grid.ColumnDefinitions>
                     <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" Placement="Bottom" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
                         <Border x:Name="shad" MinWidth="{Binding ActualWidth, ElementName=templateRoot}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="8">
-                            <Border x:Name="dropDownBorder" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="#e5e7eb" Padding="4" Margin="0,4" CornerRadius="5">
+                            <Border x:Name="dropDownBorder" Background="{StaticResource ComboBox.Popup.Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{StaticResource ComboBox.Popup.BorderBrush}" Padding="4" Margin="0,4" CornerRadius="5">
                                 <ScrollViewer x:Name="DropDownScrollViewer">
                                     <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                         <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -257,7 +377,7 @@
                         </Border>
                     </Popup>
                     <ToggleButton x:Name="toggleButton" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
-                    <Border x:Name="border" Background="White" Margin="{TemplateBinding BorderThickness}" CornerRadius="4">
+                    <Border x:Name="border" Background="{StaticResource ComboBox.TextBox.Background}" Margin="{TemplateBinding BorderThickness}" CornerRadius="4">
                         <TextBox x:Name="PART_EditableTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="0" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                 </Grid>
@@ -266,7 +386,7 @@
                         <Setter Property="Opacity" TargetName="border" Value="0.56"/>
                     </Trigger>
                     <Trigger Property="IsKeyboardFocusWithin" Value="true">
-                        <Setter TargetName="PART_EditableTextBox" Property="Foreground" Value="Black"/>
+                        <Setter TargetName="PART_EditableTextBox" Property="Foreground" Value="{StaticResource ComboBox.TextBox.Focused.Foreground}"/>
                     </Trigger>
                     <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
                         <Setter TargetName="shad" Property="Effect">
@@ -299,7 +419,7 @@
                     </Grid.ColumnDefinitions>
                     <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" Placement="Bottom" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
                         <Border x:Name="shad" MinWidth="{Binding ActualWidth, ElementName=templateRoot}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="8">
-                            <Border x:Name="dropDownBorder" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="#e5e7eb" Padding="4" Margin="0,4" CornerRadius="5">
+                            <Border x:Name="dropDownBorder" Background="{StaticResource ComboBox.Popup.Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{StaticResource ComboBox.Popup.BorderBrush}" Padding="4" Margin="0,4" CornerRadius="5">
                                 <ScrollViewer x:Name="DropDownScrollViewer">
                                     <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                         <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -340,9 +460,9 @@
             </ControlTemplate>
             <Style TargetType="{x:Type ComboBox}">
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="#e5e7eb"/>
-                <Setter Property="BorderBrush" Value="#e5e7eb"/>
-                <Setter Property="Foreground" Value="#4b5563"/>
+                <Setter Property="Background" Value="{StaticResource ComboBox.Background}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ComboBox.BorderBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ComboBox.Foreground}"/>
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
                 <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
@@ -358,6 +478,9 @@
                         <Setter Property="IsTabStop" Value="false"/>
                         <Setter Property="Padding" Value="2"/>
                         <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Foreground" Value="{StaticResource ComboBox.Disabled.Foreground}"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>

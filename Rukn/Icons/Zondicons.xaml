@@ -15,11 +15,8 @@
     <GeometryGroup x:Key="zi_checkmark">
         <Geometry>F1 M19,19z M0,0z M0 11l2-2 5 5L18 3l2 2L7 18z</Geometry>
     </GeometryGroup>
-    <GeometryGroup x:Key="zi_checkmark2">
+    <GeometryGroup x:Key="zi_checkmark-outline">
         <Geometry>F1 M19,19z M0,0z M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM6.7 9.29L9 11.6l4.3-4.3 1.4 1.42L9 14.4l-3.7-3.7 1.4-1.42z</Geometry>
-    </GeometryGroup>
-    <GeometryGroup x:Key="zi_checkmark-fill">
-        <Geometry>F1 M19,19z M0,0z M 9.9648438 -0.12304688 C 7.3785279 -0.14552 4.7832989 0.8299824 2.8066406 2.8066406 C -1.1466758 6.7599572 -1.0917365 13.186291 2.9296875 17.070312 C 6.8534748 20.860033 13.089931 20.8046 16.947266 16.947266 C 20.8046 13.089931 20.860033 6.8534748 17.070312 2.9296875 C 15.128302 0.91897551 12.55116 -0.10057375 9.9648438 -0.12304688 z M 13.300781 7.3007812 L 14.699219 8.7207031 L 9 14.400391 L 5.3007812 10.699219 L 6.6992188 9.2792969 L 6.6992188 9.2890625 L 9 11.599609 L 13.300781 7.3007812 z</Geometry>
     </GeometryGroup>
     <GeometryGroup x:Key="zi_text-box">
         <Geometry>F1 M19,19z M0,0z M0 0h6v6H0V0zm2 2v2h2V2H2zm12-2h6v6h-6V0zm2 2v2h2V2h-2zm-2 12h6v6h-6v-6zm2 2v2h2v-2h-2zM0 14h6v6H0v-6zm2 2v2h2v-2H2zM6 2h8v2H6V2zm0 14h8v2H6v-2zM16 6h2v8h-2V6zM2 6h2v8H2V6zm5 1h6v2H7V7zm2 2h2v4H9V9z</Geometry>
