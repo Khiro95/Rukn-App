@@ -10,6 +10,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Icons/Zondicons.xaml"/>
                 <ResourceDictionary Source="Vectors/Vectors.xaml"/>
+
+                <ResourceDictionary Source="pack://application:,,,/ColorPicker;component/Styles/DefaultColorPickerStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <FontFamily x:Key="UthmanicHafs">pack://application:,,,/Fonts/#KFGQPC HAFS Uthmanic Script</FontFamily>
@@ -39,11 +41,19 @@
             <SolidColorBrush x:Key="Brush.Accent.Light" Color="{StaticResource Color.Accent.Light}"/>
             <SolidColorBrush x:Key="Brush.Accent.Dark" Color="{StaticResource Color.Accent.Dark}"/>
 
-            <SolidColorBrush x:Key="TextPrimary" Color="#1f2937"/>
-            <SolidColorBrush x:Key="TextSecondary" Color="#6b7280"/>
-            <SolidColorBrush x:Key="TextDisabled" Color="#9ca3af"/>
-            <SolidColorBrush x:Key="BorderBrush" Color="#d4d4d4"/>
-            <SolidColorBrush x:Key="Control.Background" Color="#f5f5f5"/>
+            <Color x:Key="Color.Text.Primary">#1f2937</Color>
+            <Color x:Key="Color.Text.Secondary">#6b7280</Color>
+            <Color x:Key="Color.Text.Disabled">#9ca3af</Color>
+
+            <SolidColorBrush x:Key="Text.Primary" Color="{StaticResource Color.Text.Primary}"/>
+            <SolidColorBrush x:Key="Text.Secondary" Color="{StaticResource Color.Text.Secondary}"/>
+            <SolidColorBrush x:Key="Text.Disabled" Color="{StaticResource Color.Text.Disabled}"/>
+
+            <Color x:Key="Color.Control.Background">#f5f5f5</Color>
+            <Color x:Key="Color.Control.BorderBrush">#d4d4d4</Color>
+
+            <SolidColorBrush x:Key="Control.Background" Color="{StaticResource Color.Control.Background}"/>
+            <SolidColorBrush x:Key="Control.BorderBrush" Color="{StaticResource Color.Control.BorderBrush}"/>
 
             <Color x:Key="Color.Button.Background">#28664c</Color>
             <Color x:Key="Color.Button.Foreground">#ffffff</Color>
@@ -141,7 +151,7 @@
             <Style x:Key="ToggleStyle" TargetType="ToggleButton">
                 <Setter Property="OverridesDefaultStyle" Value="True"/>
                 <Setter Property="Background" Value="{StaticResource Control.Background}"/>
-                <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+                <Setter Property="Foreground" Value="{StaticResource Text.Secondary}"/>
                 <Setter Property="MinHeight" Value="16"/>
                 <Setter Property="Template">
                     <Setter.Value>
@@ -165,8 +175,8 @@
                                             </Grid.RowDefinitions>
                                             <Control x:Name="rec"/>
                                         </Grid>
-                                        <Rectangle x:Name="border" Stroke="{StaticResource BorderBrush}" StrokeThickness="1" RadiusX="{Binding ElementName=rec, Path=ActualHeight}" RadiusY="{Binding ElementName=rec, Path=ActualHeight}" Grid.ColumnSpan="2"/>
-                                        <Ellipse x:Name="thumb" Fill="White" Stroke="{StaticResource BorderBrush}" StrokeThickness="1" Margin="1"/>
+                                        <Rectangle x:Name="border" Stroke="{StaticResource Control.BorderBrush}" StrokeThickness="1" RadiusX="{Binding ElementName=rec, Path=ActualHeight}" RadiusY="{Binding ElementName=rec, Path=ActualHeight}" Grid.ColumnSpan="2"/>
+                                        <Ellipse x:Name="thumb" Fill="White" Stroke="{StaticResource Control.BorderBrush}" StrokeThickness="1" Margin="1"/>
                                     </Grid>
                                 </Border>
                             </Grid>
@@ -191,7 +201,7 @@
                                         <Condition Property="IsEnabled" Value="False"/>
                                         <Condition Property="IsChecked" Value="False"/>
                                     </MultiTrigger.Conditions>
-                                    <Setter TargetName="thumb" Property="Fill" Value="{StaticResource BorderBrush}"/>
+                                    <Setter TargetName="thumb" Property="Fill" Value="{StaticResource Control.BorderBrush}"/>
                                     <Setter TargetName="thumb" Property="Stroke" Value="Transparent"/>
                                     <Setter TargetName="thumb" Property="Margin" Value="2"/>
                                 </MultiTrigger>
@@ -205,7 +215,7 @@
                                     <Setter TargetName="thumb" Property="Margin" Value="2"/>
                                 </MultiTrigger>
                                 <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="Foreground" Value="{StaticResource TextDisabled}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource Text.Disabled}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -483,6 +493,122 @@
                         <Setter Property="Foreground" Value="{StaticResource ComboBox.Disabled.Foreground}"/>
                     </Trigger>
                 </Style.Triggers>
+            </Style>
+            
+            <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+            <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+            <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Control.BorderBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="AllowDrop" Value="true"/>
+                <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                            <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3" SnapsToDevicePixels="True">
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter Property="Foreground" Value="{StaticResource Text.Disabled}"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Brush.Accent}"/>
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="true">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Brush.Accent}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                            <Condition Property="IsSelectionActive" Value="false"/>
+                        </MultiTrigger.Conditions>
+                        <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                    </MultiTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="OptionMarkFocusVisual">
+                <Setter Property="Control.Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Rectangle Margin="14,0,0,0" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type CheckBox}">
+                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Control.BorderBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Text.Primary}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                            <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border x:Name="checkBoxBorder"
+                                        Background="{TemplateBinding Background}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        CornerRadius="3"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        MinHeight="20"
+                                        MinWidth="20">
+                                    <Grid x:Name="markGrid" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <Path x:Name="optionMark" Data="{StaticResource zi_checkmark}" Fill="{DynamicResource Brush.Accent}" Height="16" Width="16" Margin="2" Opacity="0" Stretch="Uniform"/>
+                                        <Rectangle x:Name="indeterminateMark" Fill="{DynamicResource Brush.Accent}" Margin="3" Opacity="0"/>
+                                    </Grid>
+                                </Border>
+                                <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="HasContent" Value="true">
+                                    <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
+                                    <Setter Property="Padding" Value="4,-1,0,0"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Control.Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource Brush.Accent}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Control.Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource Brush.Accent.Light}"/>
+                                    <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource Brush.Accent.Light}"/>
+                                    <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource Brush.Accent.Light}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Brush.Accent.Light}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
+                                    <Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="{x:Null}">
+                                    <Setter Property="Opacity" TargetName="optionMark" Value="0"/>
+                                    <Setter Property="Opacity" TargetName="indeterminateMark" Value="1"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
 
         </ResourceDictionary>

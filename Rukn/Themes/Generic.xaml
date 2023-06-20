@@ -108,7 +108,7 @@
     </Style>
     <Style x:Key="IconButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Text.Secondary}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="3"/>
         <Setter Property="Template">
@@ -128,7 +128,7 @@
     </Style>
     <Style TargetType="controls:TextInfoView">
         <Setter Property="Background" Value="{DynamicResource Control.Background}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Control.BorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="MinWidth" Value="230"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -160,7 +160,7 @@
                                        RadiusX="5"
                                        RadiusY="5"
                                        Fill="White"
-                                       Stroke="{DynamicResource BorderBrush}"
+                                       Stroke="{DynamicResource Control.BorderBrush}"
                                        StrokeThickness="1"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
@@ -187,14 +187,14 @@
                                 </Grid.RowDefinitions>
                                 <Path Data="{StaticResource zi_text-box}" Fill="{DynamicResource Brush.Accent.Light}" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0,16,0"/>
                                 <TextBlock Text="{Binding Width}" HorizontalAlignment="Center" Grid.Column="1"/>
-                                <Path Data="M0,0 L8,8z M0,8 L8,0z" Width="8" Height="8" Stroke="{DynamicResource TextDisabled}" StrokeThickness="1" Margin="4,0" Grid.Column="2"/>
+                                <Path Data="M0,0 L8,8z M0,8 L8,0z" Width="8" Height="8" Stroke="{DynamicResource Text.Disabled}" StrokeThickness="1" Margin="4,0" Grid.Column="2"/>
                                 <TextBlock Text="{Binding Height}" HorizontalAlignment="Center" Grid.Column="3"/>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1">
-                                    <TextBlock x:Name="PART_xLabel" Foreground="{DynamicResource TextDisabled}"/>
+                                    <TextBlock x:Name="PART_xLabel" Foreground="{DynamicResource Text.Disabled}"/>
                                     <TextBlock Text="{Binding X}" TextAlignment="Right" Margin="4,0,0,0"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="3" Grid.Row="1">
-                                    <TextBlock x:Name="PART_yLabel" Foreground="{DynamicResource TextDisabled}" Margin="0,0,0,0"/>
+                                    <TextBlock x:Name="PART_yLabel" Foreground="{DynamicResource Text.Disabled}" Margin="0,0,0,0"/>
                                     <TextBlock Text="{Binding Y}" TextAlignment="Right" Margin="4,0,0,0"/>
                                 </StackPanel>
                                 <Button x:Name="PART_ResetPositionButton"

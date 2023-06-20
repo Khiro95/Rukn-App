@@ -10,21 +10,26 @@
         xmlns:sys="clr-namespace:System;assembly=System.Runtime"
         xmlns:gl="clr-namespace:System.Globalization;assembly=System.Runtime"
         mc:Ignorable="d"
-        Foreground="{StaticResource TextPrimary}"
+        Foreground="{StaticResource Text.Primary}"
         FontFamily="{StaticResource Cairo}" FontSize="14"
-        Title="Rukn - رُكن" Width="960" UseLayoutRounding="True" WindowStartupLocation="CenterScreen" WindowState="Maximized" MinHeight="700" MinWidth="960">
+        Title="Rukn - رُكن" Width="1024" UseLayoutRounding="True" WindowStartupLocation="CenterScreen" WindowState="Maximized" MinHeight="700" MinWidth="960">
     <Window.DataContext>
         <vm:MainViewModel BackgroundColor="White" MinWidth="128" MinHeight="92"/>
     </Window.DataContext>
     <Window.Resources>
-        <Style TargetType="colorpicker:StandardColorPicker">
+        <Style TargetType="colorpicker:StandardColorPicker" BasedOn="{StaticResource DefaultColorPickerStyle}">
             <Setter Property="FontFamily" Value="Segoe UI"/>
             <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style x:Key="CustomContainerStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource Brush.Accent}"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="CornerRadius" Value="10"/>
         </Style>
         <Style x:Key="ButtonGroupLikeStyle" TargetType="ListBox">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
             <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Control.BorderBrush}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="ItemsPanel">
@@ -111,7 +116,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{x:Static local:Resources.Mode}" Foreground="{StaticResource TextSecondary}"/>
+                    <TextBlock Text="{x:Static local:Resources.Mode}" Foreground="{StaticResource Text.Secondary}"/>
                     <ComboBox ItemsSource="{Binding Source={StaticResource ReferenceModeEnum}}" SelectedItem="{Binding Mode}" Grid.Column="1" Width="150"/>
                 </Grid>
                 <ToggleButton Style="{StaticResource ToggleStyle}" x:Name="brackets" Content="{x:Static local:Resources.IncludeBrackets}" IsChecked="{Binding IncludeBrackets}" Margin="0,16,0,0"/>
@@ -124,7 +129,7 @@
         </DataTemplate>
         <DataTemplate x:Key="TextBase" DataType="{x:Type vm:TextViewModel}">
             <StackPanel Orientation="Horizontal">
-                <Path Data="{StaticResource zi_font_size}" Fill="Gray" VerticalAlignment="Center"/>
+                <Path Data="{StaticResource zi_font_size}" Fill="{StaticResource Text.Secondary}" VerticalAlignment="Center"/>
                 <ComboBox ItemStringFormat="{}{0} px" Text="{Binding FontSize, StringFormat='\{0:0.#} px', Converter={StaticResource FontSizeConverter}}" IsEditable="True" Width="70" Margin="4,0,0,0">
                     <ComboBox.ItemContainerStyle>
                         <Style TargetType="ComboBoxItem" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
@@ -163,7 +168,7 @@
             <GroupBox Header="{Binding Label, Converter={StaticResource StringToResourceConverter}}" Style="{StaticResource GBStyle}" Margin="0,16,0,0">
                 <StackPanel>
                     <ContentPresenter Content="{Binding}" ContentTemplate="{StaticResource TextBase}"/>
-                    <Rectangle Height="1" Fill="LightGray" Margin="0,16"/>
+                    <Rectangle Height="1" Fill="{StaticResource Control.BorderBrush}" Margin="0,16"/>
                     <ContentPresenter Content="{Binding Reference}"/>
                 </StackPanel>
             </GroupBox>
@@ -172,11 +177,11 @@
             <GroupBox Header="{Binding Label, Converter={StaticResource StringToResourceConverter}}" Style="{StaticResource GBStyle}" Margin="0,16,0,0">
                 <StackPanel>
                     <ContentPresenter Content="{Binding}" ContentTemplate="{StaticResource TextBase}"/>
-                    <Rectangle Height="1" Fill="LightGray" Margin="0,16"/>
+                    <Rectangle Height="1" Fill="{StaticResource Control.BorderBrush}" Margin="0,16"/>
                     <ToggleButton Style="{StaticResource ToggleStyle}" Content="{x:Static local:Resources.IncludeNumbers}" IsChecked="{Binding IncludeNumbers}"/>
                     <Grid Margin="0,16" x:Name="ref_Header">
-                        <Rectangle Height="1" Fill="LightGray"/>
-                        <TextBlock Text="{x:Static local:Resources.Reference}" FontSize="12" Foreground="{StaticResource TextSecondary}" Background="White" HorizontalAlignment="Center" Padding="8,0"/>
+                        <Rectangle Height="1" Fill="{StaticResource Control.BorderBrush}"/>
+                        <TextBlock Text="{x:Static local:Resources.Reference}" FontSize="12" Foreground="{StaticResource Text.Secondary}" Background="White" HorizontalAlignment="Center" Padding="8,0"/>
                     </Grid>
                     <ContentPresenter x:Name="reference" Content="{Binding Reference}"/>
                 </StackPanel>
@@ -192,7 +197,7 @@
             <GroupBox Header="{Binding Label, Converter={StaticResource StringToResourceConverter}}" Style="{StaticResource GBStyle}" Margin="0,16,0,0">
                 <StackPanel>
                     <ContentPresenter Content="{Binding}" ContentTemplate="{StaticResource TextBase}"/>
-                    <Rectangle Height="1" Fill="LightGray" Margin="0,16"/>
+                    <Rectangle Height="1" Fill="{StaticResource Control.BorderBrush}" Margin="0,16"/>
                     <ToggleButton Style="{StaticResource ToggleStyle}" Content="{x:Static local:Resources.IncludeNumbers}" IsChecked="{Binding IncludeNumbers}"/>
                     <ToggleButton Style="{StaticResource ToggleStyle}" Content="{x:Static local:Resources.IncludeParenthesis}" IsChecked="{Binding IncludeParenthesis}" Margin="0,16,0,0"/>
                     <Grid Margin="0,16,0,0" Visibility="{Binding IncludeParenthesis, Converter={StaticResource BooleanToVisiblilityConverter}}">
@@ -200,7 +205,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{x:Static local:Resources.Style}" Foreground="{StaticResource TextSecondary}" Margin="0,0,8,0"/>
+                        <TextBlock Text="{x:Static local:Resources.Style}" Foreground="{StaticResource Text.Secondary}" Margin="0,0,8,0"/>
                         <ComboBox ItemsSource="{Binding Source={x:Static vm:ArabicAyaTextViewModel.DecoratedParenthesis}}"
                                   SelectedItem="{Binding Parenthesis}"
                                   Width="90"
@@ -222,8 +227,8 @@
                         </ComboBox>
                     </Grid>
                     <Grid Margin="0,16" x:Name="ref_Header">
-                        <Rectangle Height="1" Fill="LightGray"/>
-                        <TextBlock Text="{x:Static local:Resources.Reference}" FontSize="12" Foreground="{StaticResource TextSecondary}" Background="White" HorizontalAlignment="Center" Padding="8,0"/>
+                        <Rectangle Height="1" Fill="{StaticResource Control.BorderBrush}"/>
+                        <TextBlock Text="{x:Static local:Resources.Reference}" FontSize="12" Foreground="{StaticResource Text.Secondary}" Background="White" HorizontalAlignment="Center" Padding="8,0"/>
                     </Grid>
                     <ContentPresenter x:Name="reference" Content="{Binding Reference}"/>
                 </StackPanel>
@@ -330,7 +335,7 @@
                       VerticalAlignment="Top"
                       HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1">
-                    <Border Background="#28664c" CornerRadius="10" Padding="5" ClipToBounds="True">
+                    <Border Style="{StaticResource CustomContainerStyle}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{x:Static local:Resources.Surah}" Foreground="White" VerticalAlignment="Center" Margin="8,0,16,0"/>
                             <ComboBox ItemsSource="{Binding Source={x:Static local:QuranReader.Quran}, Path=Suras}"
@@ -354,7 +359,7 @@
                             </ComboBox>
                         </StackPanel>
                     </Border>
-                    <Border Background="#28664c" CornerRadius="10" Padding="5" Margin="16,0,0,0">
+                    <Border Style="{StaticResource CustomContainerStyle}" Margin="16,0,0,0">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{x:Static local:Resources.Ayah}" Foreground="White" VerticalAlignment="Center" Margin="8,0,16,0"/>
                             <ComboBox ItemsSource="{Binding AyaSelector.SelectedSurah.Ayas}"
@@ -365,19 +370,23 @@
                                       MinWidth="82"/>
                         </StackPanel>
                     </Border>
-                    <Border Background="#28664c" CornerRadius="10" Padding="5" Margin="16,0,0,0">
+                    <Border Style="{StaticResource CustomContainerStyle}" Margin="16,0,0,0">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{x:Static local:Resources.To}" Foreground="White" VerticalAlignment="Center" Margin="8,0,16,0"/>
+                            <CheckBox IsChecked="{Binding AyaSelector.IsRange}" VerticalAlignment="Center" FlowDirection="LeftToRight"/>
+                            <TextBlock Text="{x:Static local:Resources.To}" Foreground="White" VerticalAlignment="Center" Margin="8,0"/>
                             <ComboBox ItemsSource="{Binding AyaSelector.SelectedSurah.Ayas}"
                                       SelectedValue="{Binding AyaSelector.EndIndex}"
                                       SelectedValuePath="ID"
                                       DisplayMemberPath="ID"
                                       MinWidth="82"
-                                      BorderThickness="0"/>
+                                      BorderThickness="0"
+                                      Margin="8,0,0,0"
+                                      Visibility="{Binding AyaSelector.IsRange, Converter={StaticResource BooleanToVisiblilityConverter}}"
+                                      d:Visibility="Visible"/>
                         </StackPanel>
                     </Border>
                 </StackPanel>
-                <Border Background="#28664c" CornerRadius="10" Padding="5" Grid.Column="2">
+                <Border Style="{StaticResource CustomContainerStyle}" Grid.Column="2">
                     <StackPanel Orientation="Horizontal">
                         <Path Data="{StaticResource zi_translate}" Fill="White" VerticalAlignment="Center" Margin="8,0,16,0"/>
                         <ComboBox SelectedValuePath="Tag"
@@ -391,7 +400,7 @@
                 </Border>
             </Grid>
         </Grid>
-        <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,1,0">
+        <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderBrush="{StaticResource Control.BorderBrush}" BorderThickness="0,0,1,0">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Width="260" Margin="8,8,0,8">
                     <GroupBox Header="{x:Static local:Resources.Board}" Style="{StaticResource GBStyle}">
@@ -407,12 +416,12 @@
                                     <RowDefinition Height="16"/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Text="{x:Static local:Resources.Background}" Foreground="{StaticResource TextSecondary}"/>
+                                <TextBlock Text="{x:Static local:Resources.Background}" Foreground="{StaticResource Text.Secondary}"/>
                                 <colorpicker:PortableColorPicker SelectedColor="{Binding BackgroundColor, Mode=TwoWay}" ShowAlpha="False" Grid.Column="2"/>
-                                <TextBlock Text="{x:Static local:Resources.Size}" Foreground="{StaticResource TextSecondary}" Grid.Row="2"/>
+                                <TextBlock Text="{x:Static local:Resources.Size}" Foreground="{StaticResource Text.Secondary}" Grid.Row="2"/>
                                 <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
                                     <TextBox Text="{Binding Width}" IsEnabled="{Binding IsImageAbsent}" Width="50"/>
-                                    <Path Data="M0,0 L8,8z M0,8 L8,0z" Width="8" Height="8" Stroke="{StaticResource TextDisabled}" StrokeThickness="1" Margin="4,0"/>
+                                    <Path Data="M0,0 L8,8z M0,8 L8,0z" Width="8" Height="8" Stroke="{StaticResource Text.Disabled}" StrokeThickness="1" Margin="4,0"/>
                                     <TextBox Text="{Binding Height}" IsEnabled="{Binding IsImageAbsent}" Width="50"/>
                                 </StackPanel>
                             </Grid>
@@ -438,7 +447,7 @@
                 <ControlTemplate TargetType="ctrl:DragResizeBox">
                     <ScrollViewer Focusable="False">
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="32">
+                            <Border BorderBrush="{StaticResource Control.BorderBrush}" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="32">
                                 <Grid Width="{Binding Width}" Height="{Binding Height}" ClipToBounds="False">
                                     <Grid.Background>
                                         <SolidColorBrush Color="{Binding BackgroundColor, Mode=OneWay}"/>
@@ -485,7 +494,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ctrl:DragResizeBox>
-        <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1,0,0,0">
+        <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" BorderBrush="{StaticResource Control.BorderBrush}" BorderThickness="1,0,0,0">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <GroupBox Header="{x:Static local:Resources.Texts}" Style="{StaticResource GBStyle}" Margin="8,8,0,8">
                     <StackPanel Margin="8">
@@ -497,7 +506,7 @@
                 </GroupBox>
             </ScrollViewer>
         </Border>
-        <Border Grid.Column="1" Grid.Row="2" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0">
+        <Border Grid.Column="1" Grid.Row="2" BorderBrush="{StaticResource Control.BorderBrush}" BorderThickness="0,1,0,0">
             <StackPanel Orientation="Horizontal" Margin="16" HorizontalAlignment="Center">
                 <Button Content="{x:Static local:Resources.Save}" Tag="{StaticResource zi_download}" Style="{StaticResource ButtonPrimaryStyle}" Width="150" Click="SaveClick"/>
                 <Button Content="{x:Static local:Resources.Copy}" Tag="{StaticResource zi_clipboard}" Style="{StaticResource ButtonSecondaryStyle}" Width="150" Margin="8,0,0,0" Click="CopyClick"/>
