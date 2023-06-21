@@ -20,6 +20,7 @@
         <Style TargetType="colorpicker:StandardColorPicker" BasedOn="{StaticResource DefaultColorPickerStyle}">
             <Setter Property="FontFamily" Value="Segoe UI"/>
             <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
         </Style>
         <Style x:Key="CustomContainerStyle" TargetType="Border">
             <Setter Property="Background" Value="{StaticResource Brush.Accent}"/>
@@ -432,7 +433,7 @@
                             <Button Content="{x:Static local:Resources.LoadImage}" Tag="{StaticResource zi_photo}" Click="LoadClick" Style="{StaticResource ButtonPrimaryStyle}" Visibility="{Binding IsImageAbsent, Converter={StaticResource BooleanToVisiblilityConverter}}"/>
                             <StackPanel Visibility="{Binding ElementName=removeBtn, Path=IsEnabled, Converter={StaticResource BooleanToVisiblilityConverter}}" d:Visibility="Visible">
                                 <Border BorderBrush="LightGray" BorderThickness="1">
-                                    <Image Source="{Binding ImagePath}"/>
+                                    <Image Source="{Binding ImagePath, TargetNullValue={x:Null}}"/>
                                 </Border>
                                 <Button x:Name="removeBtn" Content="{x:Static local:Resources.RemoveImage}" Command="{Binding RemoveImage}" Tag="{StaticResource zi_trash}" Style="{StaticResource ButtonDangerStyle}" Margin="0,8,0,0"/>
                             </StackPanel>
@@ -452,7 +453,7 @@
                                     <Grid.Background>
                                         <SolidColorBrush Color="{Binding BackgroundColor, Mode=OneWay}"/>
                                     </Grid.Background>
-                                    <Image Source="{Binding ImagePath}" Stretch="None" HorizontalAlignment="Left"/>
+                                    <Image Source="{Binding ImagePath, TargetNullValue={x:Null}}" Stretch="None" HorizontalAlignment="Left"/>
                                     <ItemsPresenter/>
                                 </Grid>
                             </Border>

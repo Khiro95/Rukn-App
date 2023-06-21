@@ -33,7 +33,13 @@ namespace Rukn.Views
 
         static MainWindow()
         {
-            LanguageProperty.OverrideMetadata(typeof(MainWindow), new FrameworkPropertyMetadata(System.Windows.Markup.XmlLanguage.GetLanguage(System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName), OnUILanguageChanged));
+            string lang = Properties.Settings.Default.DisplayLanguage;
+            if (string.IsNullOrEmpty(lang))
+            {
+                lang = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            }
+            Rukn.Resources.Culture = new System.Globalization.CultureInfo(lang);
+            LanguageProperty.OverrideMetadata(typeof(MainWindow), new FrameworkPropertyMetadata(System.Windows.Markup.XmlLanguage.GetLanguage(lang), OnUILanguageChanged));
         }
 
         private static void OnUILanguageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -48,11 +54,13 @@ namespace Rukn.Views
             {
                 return;
             }
+            Properties.Settings.Default.DisplayLanguage = lang;
+            Properties.Settings.Default.Save();
             var culture = new System.Globalization.CultureInfo(lang);
             Rukn.Resources.Culture = culture;
 
             mainWindow.Hide();
-            var newWindow = new MainWindow()
+            new MainWindow()
             {
                 DataContext = mainWindow.ViewModel,
                 Language = System.Windows.Markup.XmlLanguage.GetLanguage(lang),
@@ -60,15 +68,15 @@ namespace Rukn.Views
                 WindowStartupLocation = WindowStartupLocation.Manual,
                 Left = mainWindow.Left,
                 Top = mainWindow.Top
-            };
-            newWindow.MainGrid.FlowDirection = culture.TextInfo.IsRightToLeft ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
-            newWindow.Show();
+            }.Show();
             mainWindow.Close();
         }
 
         public MainWindow()
         {
             InitializeComponent();
+
+            MainGrid.FlowDirection = Rukn.Resources.Culture.TextInfo.IsRightToLeft ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
 
             if (ViewModel?.AyaSelector is not null)
             {
