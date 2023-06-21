@@ -151,7 +151,7 @@
     <value>Include Numbers</value>
   </data>
   <data name="IncludeParenthesis" xml:space="preserve">
-    <value>Include Parenthesis</value>
+    <value>Include Parentheses</value>
   </data>
   <data name="Inline" xml:space="preserve">
     <value>Inline</value>
@@ -212,5 +212,8 @@
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="IncludeSpaces" xml:space="preserve">
+    <value>Include Spaces</value>
   </data>
 </root>

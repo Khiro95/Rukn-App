@@ -213,4 +213,7 @@
   <data name="Error" xml:space="preserve">
     <value>خطأ</value>
   </data>
+  <data name="IncludeSpaces" xml:space="preserve">
+    <value>إدراج المسافات</value>
+  </data>
 </root>

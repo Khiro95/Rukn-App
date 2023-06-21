@@ -196,6 +196,15 @@ namespace Rukn {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Include Spaces.
+        /// </summary>
+        public static string IncludeSpaces {
+            get {
+                return ResourceManager.GetString("IncludeSpaces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inline.
         /// </summary>
         public static string Inline {

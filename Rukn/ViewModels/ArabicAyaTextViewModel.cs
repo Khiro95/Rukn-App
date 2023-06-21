@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace Rukn.ViewModels
 {
     public class ArabicAyaTextViewModel : AyaTextViewModel
     {
-        private bool includeParenthesis;
+        private bool includeParenthesis, includeSpaces;
         private string parenthesis;
         private char leftParenthesis, rightParenthesis;
 
@@ -56,6 +52,17 @@ namespace Rukn.ViewModels
                 }
             }
         }
+        public bool IncludeSpaces
+        {
+            get => includeSpaces;
+            set
+            {
+                if (SetProperty(ref includeSpaces, value))
+                {
+                    UpdateText();
+                }
+            }
+        }
 
         public ArabicAyaTextViewModel(AyaSelectorViewModel ayaSelector) : base(ayaSelector, true)
         {
@@ -67,6 +74,10 @@ namespace Rukn.ViewModels
             if (includeParenthesis)
             {
                 builder.Append(rightParenthesis);
+                if (includeSpaces)
+                {
+                    builder.Append(' ');
+                }
             }
 
             bool needSpace = false;
@@ -94,6 +105,10 @@ namespace Rukn.ViewModels
 
             if (includeParenthesis)
             {
+                if (includeSpaces)
+                {
+                    builder.Append(' ');
+                }
                 builder.Append(leftParenthesis);
             }
 
