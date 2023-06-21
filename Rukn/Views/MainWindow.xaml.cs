@@ -102,7 +102,7 @@ namespace Rukn.Views
                 var image = new BitmapImage(uri);
                 if (image.Height < ViewModel.MinHeight || image.Width < ViewModel.MinWidth)
                 {
-                    MessageBox.Show(string.Format(Rukn.Resources.Error_InvalidImageSize_Body, ViewModel.MinWidth, ViewModel.MinHeight), Rukn.Resources.Error_InvalidImageSize_Title);
+                    MessageBox.Show(string.Format(Rukn.Resources.Error_InvalidImageSize_Body, ViewModel.MinWidth, ViewModel.MinHeight), Rukn.Resources.Error_InvalidImageSize_Title, MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 ViewModel.Width = (int)image.Width;
@@ -133,7 +133,7 @@ namespace Rukn.Views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error\n" + ex.Message);
+                    MessageBox.Show(Rukn.Resources.Error + "\n" + ex.Message, Rukn.Resources.Save, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

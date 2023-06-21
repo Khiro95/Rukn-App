@@ -210,4 +210,7 @@
   <data name="Error.InvalidImageSize.Body" xml:space="preserve">
     <value>Unsupported image size. Image must be at least {0} × {1} in size.</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
 </root>

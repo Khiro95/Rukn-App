@@ -4,13 +4,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Authors>Khiro</Authors>
+    <Description>An easy tool to create images that contain quranic ayah (or ayat) and/or English translation as well.</Description>
+    <RepositoryUrl>https://github.com/Khiro95/Rukn-App</RepositoryUrl>
+    <PackageTags>Quran,Qur'an,Surah,Sura,Ayah,Aya,Image,Background</PackageTags>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
-
-	<ItemGroup>
-		<None Remove="BitterPro-Regular.ttf" />
-		<None Remove="Fonts\Cairo-VariableFont_slnt,wght.ttf" />
-		<None Remove="UthmanicHafs_V20.ttf" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="PixiEditor.ColorPicker" Version="3.3.1" />

@@ -210,4 +210,7 @@
   <data name="Error.InvalidImageSize.Body" xml:space="preserve">
     <value>مقاس الصورة غير مدعوم. يجب أن يكون المقاس على الأقل {0} × {1}.</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
 </root>
