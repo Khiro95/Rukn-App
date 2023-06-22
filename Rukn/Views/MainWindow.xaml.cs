@@ -59,6 +59,10 @@ namespace Rukn.Views
             var culture = new System.Globalization.CultureInfo(lang);
             Rukn.Resources.Culture = culture;
 
+            var items = CollectionViewSource.GetDefaultView(mainWindow.ViewModel.Texts);
+            var selectedText = items.CurrentItem;
+            items.MoveCurrentTo(null);
+
             mainWindow.Hide();
             new MainWindow()
             {
@@ -69,6 +73,9 @@ namespace Rukn.Views
                 Left = mainWindow.Left,
                 Top = mainWindow.Top
             }.Show();
+
+            items.MoveCurrentTo(selectedText);
+
             mainWindow.Close();
         }
 

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -14,11 +13,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Rukn.ViewModels;
 
-namespace Rukn.Controls
+namespace Rukn.Views
 {
-    public class TextInfoView : ToggleButton
+    /// <summary>
+    /// Interaction logic for TextInfoView.xaml
+    /// </summary>
+    public partial class TextInfoView : UserControl
     {
         private static DependencyPropertyKey IsSelectedPropertyKey = DependencyProperty.RegisterReadOnly(
             "IsSelected",
@@ -28,9 +29,20 @@ namespace Rukn.Controls
 
         public static DependencyProperty IsSelectedProperty => IsSelectedPropertyKey.DependencyProperty;
 
+        public static DependencyProperty IsCheckedProperty = DependencyProperty.Register(
+            "IsChecked",
+            typeof(bool),
+            typeof(TextInfoView),
+            new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
         public static DependencyProperty IsReferenceProperty = DependencyProperty.Register(
             "IsReference",
             typeof(bool),
+            typeof(TextInfoView));
+
+        public static DependencyProperty HeaderProperty = DependencyProperty.Register(
+            "Header",
+            typeof(object),
             typeof(TextInfoView));
 
         public static DependencyProperty InfoSourceProperty = DependencyProperty.Register(
@@ -58,13 +70,15 @@ namespace Rukn.Controls
         }
 
         public bool IsSelected { get => (bool)GetValue(IsSelectedProperty); private set => SetValue(IsSelectedPropertyKey, value); }
+        public bool IsChecked { get => (bool)GetValue(IsCheckedProperty); set => SetValue(IsCheckedProperty, value); }
         public bool IsReference { get => (bool)GetValue(IsReferenceProperty); set => SetValue(IsReferenceProperty, value); }
+        public object Header { get => GetValue(HeaderProperty); set => SetValue(HeaderProperty, value); }
         public object InfoSource { get => GetValue(InfoSourceProperty); set => SetValue(InfoSourceProperty, value); }
         public IEnumerable ItemsSource { get => (IEnumerable)GetValue(ItemsSourceProperty); set => SetValue(ItemsSourceProperty, value); }
 
-        static TextInfoView()
+        public TextInfoView()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(TextInfoView), new FrameworkPropertyMetadata(typeof(TextInfoView)));
+            InitializeComponent();
         }
 
         private void OnSelectionChanged(object sender, EventArgs e)
@@ -72,28 +86,13 @@ namespace Rukn.Controls
             IsSelected = InfoSource is not null && CollectionViewSource.GetDefaultView(ItemsSource).CurrentItem == InfoSource;
         }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             if (!IsReference)
             {
-                base.OnMouseLeftButtonDown(e);
-            }
-        }
-
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-            if (GetTemplateChild("PART_ResetPositionButton") is Button resetPosition)
-            {
-                resetPosition.ToolTip = Rukn.Resources.ResetPosition;
-            }
-            if (GetTemplateChild("PART_xLabel") is TextBlock xLabel)
-            {
-                xLabel.Text = Rukn.Resources.x;
-            }
-            if (GetTemplateChild("PART_yLabel") is TextBlock yLabel)
-            {
-                yLabel.Text = Rukn.Resources.y;
+                SetCurrentValue(IsCheckedProperty, !IsChecked);
+                e.Handled = true;
+                base.OnMouseLeftButtonUp(e);
             }
         }
     }

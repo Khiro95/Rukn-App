@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Rukn"
+        xmlns:views="clr-namespace:Rukn.Views"
         xmlns:ctrl="clr-namespace:Rukn.Controls"
         xmlns:vm="clr-namespace:Rukn.ViewModels"
         xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
@@ -46,6 +47,7 @@
                         <Setter Property="OverridesDefaultStyle" Value="True"/>
                         <Setter Property="Background" Value="Transparent"/>
                         <Setter Property="Padding" Value="6,5"/>
+                        <Setter Property="FlowDirection" Value="LeftToRight"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="ListBoxItem">
@@ -67,7 +69,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBox">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" FlowDirection="LeftToRight">
                             <ItemsPresenter>
                                 <ItemsPresenter.Clip>
                                     <MultiBinding Converter="{StaticResource BorderClipConverter}">
@@ -511,10 +513,10 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <GroupBox Header="{x:Static local:Resources.Texts}" Style="{StaticResource GBStyle}" Margin="8,8,0,8">
                     <StackPanel Margin="8">
-                        <ctrl:TextInfoView Content="{x:Static local:Resources.ArabicText}" IsChecked="{Binding IncludeArabic}" InfoSource="{Binding Verses}" ItemsSource="{Binding Texts}"/>
-                        <ctrl:TextInfoView Content="{x:Static local:Resources.EnglishTranslation}" IsChecked="{Binding IncludeTranslation}" InfoSource="{Binding Translation}" ItemsSource="{Binding Texts}" Margin="0,16,0,0"/>
-                        <ctrl:TextInfoView Content="{x:Static local:Resources.ArabicReference}" IsReference="True" InfoSource="{Binding Reference}" ItemsSource="{Binding Texts}" d:Visibility="Visible" Margin="0,16,0,0"/>
-                        <ctrl:TextInfoView Content="{x:Static local:Resources.EnglishReference}" IsReference="True" InfoSource="{Binding EnglishReference}" ItemsSource="{Binding Texts}" d:Visibility="Visible" Margin="0,16,0,0"/>
+                        <views:TextInfoView Header="{x:Static local:Resources.ArabicText}" IsChecked="{Binding IncludeArabic}" InfoSource="{Binding Verses}" ItemsSource="{Binding Texts}"/>
+                        <views:TextInfoView Header="{x:Static local:Resources.EnglishTranslation}" IsChecked="{Binding IncludeTranslation}" InfoSource="{Binding Translation}" ItemsSource="{Binding Texts}" Margin="0,16,0,0"/>
+                        <views:TextInfoView Header="{x:Static local:Resources.ArabicReference}" IsReference="True" InfoSource="{Binding Reference}" ItemsSource="{Binding Texts}" d:Visibility="Visible" Margin="0,16,0,0"/>
+                        <views:TextInfoView Header="{x:Static local:Resources.EnglishReference}" IsReference="True" InfoSource="{Binding EnglishReference}" ItemsSource="{Binding Texts}" d:Visibility="Visible" Margin="0,16,0,0"/>
                     </StackPanel>
                 </GroupBox>
             </ScrollViewer>
