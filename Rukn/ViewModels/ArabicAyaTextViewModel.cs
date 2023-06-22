@@ -4,11 +4,11 @@ namespace Rukn.ViewModels
 {
     public class ArabicAyaTextViewModel : AyaTextViewModel
     {
-        private bool includeParenthesis, includeSpaces;
-        private string parenthesis;
+        private bool includeParentheses, includeSpaces;
+        private string parentheses;
         private char leftParenthesis, rightParenthesis;
 
-        public static readonly string[] DecoratedParenthesis =
+        public static readonly string[] DecoratedParentheses =
         {
             "\ufd5e\ufd5f",
             "\ufd60\ufd61",
@@ -28,23 +28,23 @@ namespace Rukn.ViewModels
             "\ufd7c\ufd7d",
         };
 
-        public bool IncludeParenthesis
+        public bool IncludeParentheses
         {
-            get => includeParenthesis;
+            get => includeParentheses;
             set
             {
-                if (SetProperty(ref includeParenthesis, value))
+                if (SetProperty(ref includeParentheses, value))
                 {
                     UpdateText();
                 }
             }
         }
-        public string Parenthesis
+        public string Parentheses
         {
-            get => parenthesis;
+            get => parentheses;
             set
             {
-                if (SetProperty(ref parenthesis, value) && value != null)
+                if (SetProperty(ref parentheses, value) && value != null)
                 {
                     leftParenthesis = value[0];
                     rightParenthesis = value[1];
@@ -66,12 +66,12 @@ namespace Rukn.ViewModels
 
         public ArabicAyaTextViewModel(AyaSelectorViewModel ayaSelector) : base(ayaSelector, true)
         {
-            Parenthesis = DecoratedParenthesis[0];
+            Parentheses = DecoratedParentheses[0];
         }
 
         protected override void UpdateText()
         {
-            if (includeParenthesis)
+            if (includeParentheses)
             {
                 builder.Append(rightParenthesis);
                 if (includeSpaces)
@@ -103,7 +103,7 @@ namespace Rukn.ViewModels
                 needSpace = true;
             }
 
-            if (includeParenthesis)
+            if (includeParentheses)
             {
                 if (includeSpaces)
                 {

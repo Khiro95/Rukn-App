@@ -187,11 +187,11 @@ namespace Rukn {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Include Parenthesis.
+        ///   Looks up a localized string similar to Include Parentheses.
         /// </summary>
-        public static string IncludeParenthesis {
+        public static string IncludeParentheses {
             get {
-                return ResourceManager.GetString("IncludeParenthesis", resourceCulture);
+                return ResourceManager.GetString("IncludeParentheses", resourceCulture);
             }
         }
         

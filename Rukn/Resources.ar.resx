@@ -150,7 +150,7 @@
   <data name="IncludeNumbers" xml:space="preserve">
     <value>تضمين الأرقام</value>
   </data>
-  <data name="IncludeParenthesis" xml:space="preserve">
+  <data name="IncludeParentheses" xml:space="preserve">
     <value>تضمين الأقواس</value>
   </data>
   <data name="Inline" xml:space="preserve">
