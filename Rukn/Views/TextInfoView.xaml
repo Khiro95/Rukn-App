@@ -67,7 +67,7 @@
             <ContentPresenter.Style>
                 <Style TargetType="ContentPresenter">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:TextInfoView}, Path=IsChecked}" Value="False">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:TextInfoView}, Path=IsChecked}" Value="True">
                             <Setter Property="TextBlock.Foreground" Value="{DynamicResource Brush.Accent}"/>
                             <Setter Property="TextBlock.FontWeight" Value="DemiBold"/>
                         </DataTrigger>
@@ -117,7 +117,7 @@
                 </Style>
             </Path.Style>
         </Path>
-        <Grid x:Name="grid" Margin="0,8,0,0" Grid.Row="1" Grid.ColumnSpan="2" Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:TextInfoView}, Path=IsChecked, Converter={StaticResource BooleanToVisiblilityConverter}}">
+        <Grid x:Name="grid" Margin="0,8,0,0" Grid.Row="1" Grid.ColumnSpan="2" Visibility="{Binding ElementName=uc, Path=IsChecked, Converter={StaticResource BooleanToVisiblilityConverter}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
