@@ -345,9 +345,9 @@
                 <Path Stretch="Uniform"
                       Fill="#f3f4f6"
                       Data="{StaticResource Logo}"
-                      Height="40"
+                      Height="32"
                       FlowDirection="LeftToRight"
-                      VerticalAlignment="Top"
+                      VerticalAlignment="Center"
                       HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1">
                     <Border Style="{StaticResource CustomContainerStyle}">
