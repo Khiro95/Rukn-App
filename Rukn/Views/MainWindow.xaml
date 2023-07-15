@@ -153,7 +153,7 @@
                         </x:Array>
                     </ComboBox.ItemsSource>
                 </ComboBox>
-                <colorpicker:PortableColorPicker SelectedColor="{Binding Foreground, Mode=TwoWay}" ShowAlpha="False" Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}" Margin="8,2,0,2"/>
+                <views:PortableColorPicker SelectedColor="{Binding Foreground, Mode=TwoWay}" ShowAlpha="False" Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}" Margin="8,2,0,2"/>
                 <ListBox Style="{StaticResource ButtonGroupLikeStyle}" SelectedValue="{Binding Alignment}" SelectedValuePath="Tag" Margin="8,0,0,0">
                     <ListBoxItem Tag="Left">
                         <Path Data="{StaticResource zi_align-left}" Fill="{Binding (TextBlock.Foreground), RelativeSource={RelativeSource Self}}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -432,7 +432,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <TextBlock Text="{x:Static local:Resources.Background}" Foreground="{StaticResource Text.Secondary}"/>
-                                <colorpicker:PortableColorPicker SelectedColor="{Binding BackgroundColor, Mode=TwoWay}" ShowAlpha="False" Grid.Column="2"/>
+                                <views:PortableColorPicker SelectedColor="{Binding BackgroundColor, Mode=TwoWay}" ShowAlpha="False" Grid.Column="2"/>
                                 <TextBlock Text="{x:Static local:Resources.Size}" Foreground="{StaticResource Text.Secondary}" Grid.Row="2"/>
                                 <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
                                     <TextBox Text="{Binding Width}" IsEnabled="{Binding IsImageAbsent}" Width="50"/>
