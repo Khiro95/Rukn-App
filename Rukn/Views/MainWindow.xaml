@@ -18,7 +18,7 @@
         <vm:MainViewModel BackgroundColor="White" MinWidth="128" MinHeight="92"/>
     </Window.DataContext>
     <Window.Resources>
-        <Style TargetType="colorpicker:StandardColorPicker" BasedOn="{StaticResource DefaultColorPickerStyle}">
+        <Style TargetType="colorpicker:StandardColorPicker" BasedOn="{StaticResource LightColorPickerStyle}">
             <Setter Property="FontFamily" Value="Segoe UI"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FlowDirection" Value="LeftToRight"/>
@@ -408,7 +408,7 @@
                                   SelectedValue="{Binding ElementName=window, Path=Language, ConverterCulture={x:Static gl:CultureInfo.CurrentCulture}}"
                                   BorderThickness="0"
                                   MinWidth="100">
-                            <ComboBoxItem Tag="en">English</ComboBoxItem>
+                            <ComboBoxItem Tag="en" FlowDirection="LeftToRight">English</ComboBoxItem>
                             <ComboBoxItem Tag="ar" FlowDirection="RightToLeft">العربية</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>

@@ -11,6 +11,8 @@
                 <ResourceDictionary Source="Icons/Zondicons.xaml"/>
                 <ResourceDictionary Source="Vectors/Vectors.xaml"/>
 
+                <ResourceDictionary Source="Styles/LightColorPickerStyle.xaml"/>
+
                 <ResourceDictionary Source="pack://application:,,,/ColorPicker;component/Styles/DefaultColorPickerStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
