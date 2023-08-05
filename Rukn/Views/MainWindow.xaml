@@ -325,7 +325,7 @@
                     </DrawingBrush>
                 </Border.Background>
                 <Border.Effect>
-                    <DropShadowEffect BlurRadius="20" ShadowDepth="6" Direction="90" Color="#194030"/>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="6" Direction="90"/>
                 </Border.Effect>
             </Border>
             <Path Data="{StaticResource Hafs-an-Asim}"
@@ -419,28 +419,26 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Width="260" Margin="8,8,0,8">
                     <GroupBox Header="{x:Static local:Resources.Board}" Style="{StaticResource GBStyle}">
-                        <StackPanel>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="8"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition Height="16"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Text="{x:Static local:Resources.Background}" Foreground="{StaticResource Text.Secondary}"/>
-                                <views:PortableColorPicker SelectedColor="{Binding BackgroundColor, Mode=TwoWay}" ShowAlpha="False" Grid.Column="2"/>
-                                <TextBlock Text="{x:Static local:Resources.Size}" Foreground="{StaticResource Text.Secondary}" Grid.Row="2"/>
-                                <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
-                                    <TextBox Text="{Binding Width}" IsEnabled="{Binding IsImageAbsent}" Width="50"/>
-                                    <Path Data="M0,0 L8,8z M0,8 L8,0z" Width="8" Height="8" Stroke="{StaticResource Text.Disabled}" StrokeThickness="1" Margin="4,0"/>
-                                    <TextBox Text="{Binding Height}" IsEnabled="{Binding IsImageAbsent}" Width="50"/>
-                                </StackPanel>
-                            </Grid>
-                        </StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="16"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{x:Static local:Resources.Background}" Foreground="{StaticResource Text.Secondary}"/>
+                            <views:PortableColorPicker SelectedColor="{Binding BackgroundColor, Mode=TwoWay}" ShowAlpha="False" Grid.Column="2"/>
+                            <TextBlock Text="{x:Static local:Resources.Size}" Foreground="{StaticResource Text.Secondary}" Grid.Row="2"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
+                                <TextBox Text="{Binding Width}" IsEnabled="{Binding IsImageAbsent}" Width="50"/>
+                                <Path Data="M0,0 L8,8z M0,8 L8,0z" Width="8" Height="8" Stroke="{StaticResource Text.Disabled}" StrokeThickness="1" Margin="4,0"/>
+                                <TextBox Text="{Binding Height}" IsEnabled="{Binding IsImageAbsent}" Width="50"/>
+                            </StackPanel>
+                        </Grid>
                     </GroupBox>
                     <GroupBox Header="{x:Static local:Resources.Image}" Style="{StaticResource GBStyle}" Margin="0,16,0,0">
                         <StackPanel>
