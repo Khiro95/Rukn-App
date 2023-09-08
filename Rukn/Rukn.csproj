@@ -9,6 +9,7 @@
     <RepositoryUrl>https://github.com/Khiro95/Rukn-App</RepositoryUrl>
     <PackageTags>Quran,Qur'an,Surah,Sura,Ayah,Aya,Image,Background</PackageTags>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>appicon.ico</ApplicationIcon>
   </PropertyGroup>
 
 	<ItemGroup>
