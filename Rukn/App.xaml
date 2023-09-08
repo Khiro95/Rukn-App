@@ -148,10 +148,25 @@
                 </Style.Resources>
             </Style>
 
+            <SolidColorBrush x:Key="Toggle.Background" Color="{StaticResource Color.Control.Background}"/>
+            <SolidColorBrush x:Key="Toggle.BorderBrush" Color="{StaticResource Color.Control.BorderBrush}"/>
+            <SolidColorBrush x:Key="Toggle.Foreground" Color="{StaticResource Color.Text.Secondary}"/>
+            <SolidColorBrush x:Key="Toggle.Thumb.Background" Color="#ffffff"/>
+            <SolidColorBrush x:Key="Toggle.Thumb.BorderBrush" Color="{StaticResource Color.Control.BorderBrush}"/>
+            <SolidColorBrush x:Key="Toggle.Hover.BorderBrush" Color="{StaticResource Color.Accent}"/>
+            <SolidColorBrush x:Key="Toggle.Checked.Background" Color="{StaticResource Color.Accent}"/>
+            <SolidColorBrush x:Key="Toggle.Checked.BorderBrush" Color="{StaticResource Color.Accent}"/>
+            <SolidColorBrush x:Key="Toggle.Checked.Thumb.Background" Color="#ffffff"/>
+            <SolidColorBrush x:Key="Toggle.Checked.Thumb.BorderBrush" Color="Transparent"/>
+            <SolidColorBrush x:Key="Toggle.Disabled.Foreground" Color="{StaticResource Color.Text.Disabled}"/>
+            <SolidColorBrush x:Key="Toggle.Disabled.Thumb.Background" Color="{StaticResource Color.Control.BorderBrush}"/>
+            <SolidColorBrush x:Key="Toggle.Disabled.Thumb.BorderBrush" Color="Transparent"/>
+            <SolidColorBrush x:Key="Toggle.Checked.Disabled.Background" Color="{StaticResource Color.Accent.Light}"/>
+
             <Style x:Key="ToggleStyle" TargetType="ToggleButton">
                 <Setter Property="OverridesDefaultStyle" Value="True"/>
-                <Setter Property="Background" Value="{StaticResource Control.Background}"/>
-                <Setter Property="Foreground" Value="{StaticResource Text.Secondary}"/>
+                <Setter Property="Background" Value="{StaticResource Toggle.Background}"/>
+                <Setter Property="Foreground" Value="{StaticResource Toggle.Foreground}"/>
                 <Setter Property="MinHeight" Value="16"/>
                 <Setter Property="Template">
                     <Setter.Value>
@@ -175,17 +190,17 @@
                                             </Grid.RowDefinitions>
                                             <Control x:Name="rec"/>
                                         </Grid>
-                                        <Rectangle x:Name="border" Stroke="{StaticResource Control.BorderBrush}" StrokeThickness="1" RadiusX="{Binding ElementName=rec, Path=ActualHeight}" RadiusY="{Binding ElementName=rec, Path=ActualHeight}" Grid.ColumnSpan="2"/>
-                                        <Ellipse x:Name="thumb" Fill="White" Stroke="{StaticResource Control.BorderBrush}" StrokeThickness="1" Margin="1"/>
+                                        <Rectangle x:Name="border" Stroke="{StaticResource Toggle.BorderBrush}" StrokeThickness="1" RadiusX="{Binding ElementName=rec, Path=ActualHeight}" RadiusY="{Binding ElementName=rec, Path=ActualHeight}" Grid.ColumnSpan="2"/>
+                                        <Ellipse x:Name="thumb" Fill="{StaticResource Toggle.Thumb.Background}" Stroke="{StaticResource Toggle.Thumb.BorderBrush}" StrokeThickness="1" Margin="1"/>
                                     </Grid>
                                 </Border>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsChecked" Value="True">
-                                    <Setter TargetName="root" Property="Background" Value="{StaticResource Brush.Accent}"/>
-                                    <Setter TargetName="border" Property="Stroke" Value="Transparent"/>
-                                    <Setter TargetName="thumb" Property="Fill" Value="White"/>
-                                    <Setter TargetName="thumb" Property="Stroke" Value="Transparent"/>
+                                    <Setter TargetName="root" Property="Background" Value="{StaticResource Toggle.Checked.Background}"/>
+                                    <Setter TargetName="border" Property="Stroke" Value="{StaticResource Toggle.Checked.BorderBrush}"/>
+                                    <Setter TargetName="thumb" Property="Fill" Value="{StaticResource Toggle.Checked.Thumb.Background}"/>
+                                    <Setter TargetName="thumb" Property="Stroke" Value="{StaticResource Toggle.Checked.Thumb.BorderBrush}"/>
                                     <Setter TargetName="thumb" Property="Margin" Value="2"/>
                                     <Setter TargetName="thumb" Property="Grid.Column" Value="1"/>
                                 </Trigger>
@@ -194,15 +209,15 @@
                                         <Condition Property="IsMouseOver" Value="True"/>
                                         <Condition Property="IsChecked" Value="False"/>
                                     </MultiTrigger.Conditions>
-                                    <Setter TargetName="border" Property="Stroke" Value="{StaticResource Brush.Accent}"/>
+                                    <Setter TargetName="border" Property="Stroke" Value="{StaticResource Toggle.Hover.BorderBrush}"/>
                                 </MultiTrigger>
                                 <MultiTrigger>
                                     <MultiTrigger.Conditions>
                                         <Condition Property="IsEnabled" Value="False"/>
                                         <Condition Property="IsChecked" Value="False"/>
                                     </MultiTrigger.Conditions>
-                                    <Setter TargetName="thumb" Property="Fill" Value="{StaticResource Control.BorderBrush}"/>
-                                    <Setter TargetName="thumb" Property="Stroke" Value="Transparent"/>
+                                    <Setter TargetName="thumb" Property="Fill" Value="{StaticResource Toggle.Disabled.Thumb.Background}"/>
+                                    <Setter TargetName="thumb" Property="Stroke" Value="{StaticResource Toggle.Disabled.Thumb.BorderBrush}"/>
                                     <Setter TargetName="thumb" Property="Margin" Value="2"/>
                                 </MultiTrigger>
                                 <MultiTrigger>
@@ -210,12 +225,12 @@
                                         <Condition Property="IsEnabled" Value="False"/>
                                         <Condition Property="IsChecked" Value="True"/>
                                     </MultiTrigger.Conditions>
-                                    <Setter TargetName="root" Property="Background" Value="{StaticResource Brush.Accent.Light}"/>
-                                    <Setter TargetName="thumb" Property="Stroke" Value="Transparent"/>
+                                    <Setter TargetName="root" Property="Background" Value="{StaticResource Toggle.Checked.Disabled.Background}"/>
+                                    <Setter TargetName="thumb" Property="Stroke" Value="{StaticResource Toggle.Disabled.Thumb.BorderBrush}"/>
                                     <Setter TargetName="thumb" Property="Margin" Value="2"/>
                                 </MultiTrigger>
                                 <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="Foreground" Value="{StaticResource Text.Disabled}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource Toggle.Disabled.Foreground}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -235,10 +250,10 @@
 
             <SolidColorBrush x:Key="ComboBoxItem.Background" Color="Transparent"/>
             <SolidColorBrush x:Key="ComboBoxItem.BorderBrush" Color="Transparent"/>
-            <SolidColorBrush x:Key="ComboBoxItem.Hover.Background" Color="#f3f4f6"/>
-            <SolidColorBrush x:Key="ComboBoxItem.Selected.Background" Color="#28664c"/>
+            <SolidColorBrush x:Key="ComboBoxItem.Hover.Background" Color="{StaticResource Color.Control.Background}"/>
+            <SolidColorBrush x:Key="ComboBoxItem.Selected.Background" Color="{StaticResource Color.Accent}"/>
             <SolidColorBrush x:Key="ComboBoxItem.Selected.Foreground" Color="#ffffff"/>
-            <SolidColorBrush x:Key="ComboBoxItem.Disabled.Foreground" Color="#9ca3af"/>
+            <SolidColorBrush x:Key="ComboBoxItem.Disabled.Foreground" Color="{StaticResource Color.Text.Disabled}"/>
 
             <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
                 <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -299,18 +314,18 @@
                 </Setter>
             </Style>
 
-            <SolidColorBrush x:Key="ComboBox.Background" Color="#e5e7eb"/>
-            <SolidColorBrush x:Key="ComboBox.Foreground" Color="#4b5563"/>
-            <SolidColorBrush x:Key="ComboBox.BorderBrush" Color="#e5e7eb"/>
-            <SolidColorBrush x:Key="ComboBox.Hover.Background" Color="#f3f4f6"/>
+            <SolidColorBrush x:Key="ComboBox.Background" Color="{StaticResource Color.Control.Background}"/>
+            <SolidColorBrush x:Key="ComboBox.Foreground" Color="{StaticResource Color.Text.Primary}"/>
+            <SolidColorBrush x:Key="ComboBox.BorderBrush" Color="{StaticResource Color.Control.BorderBrush}"/>
+            <SolidColorBrush x:Key="ComboBox.Hover.Background" Color="#ffffff"/>
             <SolidColorBrush x:Key="ComboBox.Open.Background" Color="#ffffff"/>
-            <SolidColorBrush x:Key="ComboBox.Open.BorderBrush" Color="#e5e7eb"/>
+            <SolidColorBrush x:Key="ComboBox.Open.BorderBrush" Color="{StaticResource Color.Control.BorderBrush}"/>
             <SolidColorBrush x:Key="ComboBox.Popup.Background" Color="#ffffff"/>
-            <SolidColorBrush x:Key="ComboBox.Popup.BorderBrush" Color="#e5e7eb"/>
+            <SolidColorBrush x:Key="ComboBox.Popup.BorderBrush" Color="{StaticResource Color.Control.BorderBrush}"/>
             <SolidColorBrush x:Key="ComboBox.TextBox.Background" Color="#ffffff"/>
             <SolidColorBrush x:Key="ComboBox.TextBox.Focused.Foreground" Color="#000000"/>
-            <SolidColorBrush x:Key="ComboBox.Editable.BorderBrush" Color="#d1d5db"/>
-            <SolidColorBrush x:Key="ComboBox.Disabled.Foreground" Color="#9ca3af"/>
+            <SolidColorBrush x:Key="ComboBox.Editable.BorderBrush" Color="{StaticResource Color.Control.BorderBrush}"/>
+            <SolidColorBrush x:Key="ComboBox.Disabled.Foreground" Color="{StaticResource Color.Text.Disabled}"/>
             <SolidColorBrush x:Key="ComboBox.Disabled.Background" Color="#d1d5db"/>
             <SolidColorBrush x:Key="ComboBox.Disabled.BorderBrush" Color="#d1d5db"/>
 
@@ -494,10 +509,17 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            
+
+            <SolidColorBrush x:Key="TextBox.Background" Color="#ffffff"/>
+            <SolidColorBrush x:Key="TextBox.BorderBrush" Color="{StaticResource Color.Control.BorderBrush}"/>
+            <SolidColorBrush x:Key="TextBox.Foreground" Color="{StaticResource Color.Text.Primary}"/>
+            <SolidColorBrush x:Key="TextBox.Hover.BorderBrush" Color="{StaticResource Color.Accent}"/>
+            <SolidColorBrush x:Key="TextBox.Disabled.Foreground" Color="{StaticResource Color.Text.Disabled}"/>
+
             <Style TargetType="{x:Type TextBox}">
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="BorderBrush" Value="{StaticResource Control.BorderBrush}"/>
+                <Setter Property="Background" Value="{StaticResource TextBox.Background}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource TextBox.BorderBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextBox.Foreground}"/>
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
                 <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -513,13 +535,13 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsEnabled" Value="false">
-                                    <Setter Property="Foreground" Value="{StaticResource Text.Disabled}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource TextBox.Disabled.Foreground}"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Brush.Accent}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Hover.BorderBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsKeyboardFocused" Value="true">
-                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Brush.Accent}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Hover.BorderBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -546,11 +568,20 @@
                 </Setter>
             </Style>
 
+            <SolidColorBrush x:Key="CheckBox.Background" Color="#ffffff"/>
+            <SolidColorBrush x:Key="CheckBox.BorderBrush" Color="{StaticResource Color.Control.BorderBrush}"/>
+            <SolidColorBrush x:Key="CheckBox.Foreground" Color="{StaticResource Color.Text.Primary}"/>
+            <SolidColorBrush x:Key="CheckBox.Mark" Color="{StaticResource Color.Accent}"/>
+            <SolidColorBrush x:Key="CheckBox.Hover.Background" Color="{StaticResource Color.Control.Background}"/>
+            <SolidColorBrush x:Key="CheckBox.Hover.BorderBrush" Color="{StaticResource Color.Accent}"/>
+            <SolidColorBrush x:Key="CheckBox.Disabled.BorderBrush" Color="{StaticResource Color.Accent.Light}"/>
+            <SolidColorBrush x:Key="CheckBox.Disabled.Mark" Color="{StaticResource Color.Accent.Light}"/>
+
             <Style TargetType="{x:Type CheckBox}">
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="BorderBrush" Value="{StaticResource Control.BorderBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource Text.Primary}"/>
+                <Setter Property="Background" Value="{StaticResource CheckBox.Background}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource CheckBox.BorderBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource CheckBox.Foreground}"/>
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="Template">
                     <Setter.Value>
@@ -570,8 +601,8 @@
                                         MinHeight="20"
                                         MinWidth="20">
                                     <Grid x:Name="markGrid" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <Path x:Name="optionMark" Data="{StaticResource zi_checkmark}" Fill="{DynamicResource Brush.Accent}" Height="16" Width="16" Margin="2" Opacity="0" Stretch="Uniform"/>
-                                        <Rectangle x:Name="indeterminateMark" Fill="{DynamicResource Brush.Accent}" Margin="3" Opacity="0"/>
+                                        <Path x:Name="optionMark" Data="{StaticResource zi_checkmark}" Fill="{StaticResource CheckBox.Mark}" Height="16" Width="16" Margin="2" Opacity="0" Stretch="Uniform"/>
+                                        <Rectangle x:Name="indeterminateMark" Fill="{StaticResource CheckBox.Mark}" Margin="3" Opacity="0"/>
                                     </Grid>
                                 </Border>
                                 <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -582,18 +613,17 @@
                                     <Setter Property="Padding" Value="4,-1,0,0"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Control.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource Brush.Accent}"/>
+                                    <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource CheckBox.Hover.Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource CheckBox.Hover.BorderBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
-                                    <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Control.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource Brush.Accent.Light}"/>
-                                    <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource Brush.Accent.Light}"/>
-                                    <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource Brush.Accent.Light}"/>
+                                    <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource CheckBox.Disabled.BorderBrush}"/>
+                                    <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource CheckBox.Disabled.Mark}"/>
+                                    <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource CheckBox.Disabled.Mark}"/>
                                 </Trigger>
-                                <Trigger Property="IsPressed" Value="true">
+                                <!--<Trigger Property="IsPressed" Value="true">
                                     <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Brush.Accent.Light}"/>
-                                </Trigger>
+                                </Trigger>-->
                                 <Trigger Property="IsChecked" Value="true">
                                     <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
                                     <Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>

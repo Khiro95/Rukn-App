@@ -59,8 +59,8 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#b8ccc2"/>
-                                <Setter Property="Foreground" Value="#28664c"/>
+                                <Setter Property="Background" Value="{StaticResource Brush.Accent.Light}"/>
+                                <Setter Property="Foreground" Value="{StaticResource Brush.Accent}"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -103,8 +103,8 @@
                                               ContentTemplate="{TemplateBinding HeaderTemplate}"
                                               ContentStringFormat="{TemplateBinding HeaderStringFormat}"
                                               TextBlock.FontWeight="DemiBold"
-                                              TextBlock.Foreground="#28664c"/>
-                            <Rectangle Fill="#b8ccc2" Height="1" Margin="8,0,0,0" Grid.Column="1"/>
+                                              TextBlock.Foreground="{StaticResource Brush.Accent}"/>
+                            <Rectangle Fill="{StaticResource Brush.Accent.Light}" Height="1" Margin="8,0,0,0" Grid.Column="1"/>
                             <ContentPresenter Grid.Row="1" Grid.ColumnSpan="2" Margin="{TemplateBinding Padding}"/>
                         </Grid>
                     </ControlTemplate>
@@ -267,7 +267,7 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Background="#194030" Grid.Row="0" Grid.ColumnSpan="3">
+        <Grid Background="{StaticResource Brush.Accent.Dark}" Grid.Row="0" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="72"/>
                 <RowDefinition Height="Auto"/>
