@@ -1,55 +1,61 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
-    <Authors>Khiro</Authors>
-    <Description>An easy tool to create images that contain quranic ayah (or ayat) and/or English translation as well.</Description>
-    <RepositoryUrl>https://github.com/Khiro95/Rukn-App</RepositoryUrl>
-    <PackageTags>Quran,Qur'an,Surah,Sura,Ayah,Aya,Image,Background</PackageTags>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>appicon.ico</ApplicationIcon>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <Authors>Khiro</Authors>
+        <Description>An easy tool to create images that contain Quranic ayah (or ayat) and/or English translation as well.</Description>
+        <RepositoryUrl>https://github.com/Khiro95/Rukn-App</RepositoryUrl>
+        <PackageTags>Quran,Qur'an,Surah,Sura,Ayah,Aya,Image,Background,Rukn</PackageTags>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <ApplicationIcon>appicon.ico</ApplicationIcon>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="PixiEditor.ColorPicker" Version="3.3.1" />
-	</ItemGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<Resource Include="Fonts\BitterPro-Regular.ttf" />
-		<Resource Include="Fonts\Cairo-VariableFont_slnt,wght.ttf" />
-		<Resource Include="Fonts\UthmanicHafs_V20.ttf" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="PixiEditor.ColorPicker" Version="3.3.1" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<None Update="Properties\Settings.settings">
-		  <Generator>SettingsSingleFileGenerator</Generator>
-		  <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-		</None>
-		<None Update="quran_hafs_and_english.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
+    <ItemGroup>
+        <Resource Include="Fonts\BitterPro-Regular.ttf" />
+        <Resource Include="Fonts\Cairo-VariableFont_slnt,wght.ttf" />
+        <Resource Include="Fonts\UthmanicHafs_V20.ttf" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<Compile Update="Properties\Settings.Designer.cs">
-		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>Settings.settings</DependentUpon>
-		</Compile>
-		<Compile Update="Resources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Resources.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
+    <ItemGroup>
+        <None Update="Properties\Settings.settings">
+            <Generator>SettingsSingleFileGenerator</Generator>
+            <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+        </None>
+        <None Update="quran_hafs_and_english.xml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
-	<ItemGroup>
-		<EmbeddedResource Update="Resources.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-	</ItemGroup>
+    <ItemGroup>
+        <Compile Update="Properties\Settings.Designer.cs">
+            <DesignTimeSharedInput>True</DesignTimeSharedInput>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Settings.settings</DependentUpon>
+        </Compile>
+        <Compile Update="Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Update="Resources.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
 
 </Project>
