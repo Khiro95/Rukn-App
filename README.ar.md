@@ -1,5 +1,5 @@
 <div align="center">
-    <img alt="logo" src="/../../../../khiro95/rukn-web/blob/preview/images/logo.png" height="64"/>
+    <img alt="logo" src="/../../../../khiro95/rukn-web/blob/main/images/logo.png" height="64"/>
 </div>
 
 English version is available [here](README.md)
@@ -10,7 +10,7 @@ English version is available [here](README.md)
 
 ## تطبيق الويب
 
-تطبيق ركن متاح أيضا ك[تطبيق ويب](https://rukn-app.web.app) والمصدر متوفر [هنا](https://github.com/khiro95/rukn-app).
+تطبيق ركن متاح أيضا ك[تطبيق ويب](https://rukn-app.web.app) والمصدر متوفر [هنا](https://github.com/khiro95/rukn-web).
 
 ## تشغيل
 
@@ -55,10 +55,10 @@ English version is available [here](README.md)
 
 الصور التالية هي مثال على عمل تم بواسطة التطبيق:
 
-![Sample1](/../../../../khiro95/rukn-web/blob/preview/images/sample1.png)
-![Sample2](/../../../../khiro95/rukn-web/blob/preview/images/sample2.png)
-![Sample3](/../../../../khiro95/rukn-web/blob/preview/images/sample3.png)
-![Sample4](/../../../../khiro95/rukn-web/blob/preview/images/sample4.png)
+![Sample1](/../../../../khiro95/rukn-web/blob/main/images/sample1.png)
+![Sample2](/../../../../khiro95/rukn-web/blob/main/images/sample2.png)
+![Sample3](/../../../../khiro95/rukn-web/blob/main/images/sample3.png)
+![Sample4](/../../../../khiro95/rukn-web/blob/main/images/sample4.png)
 
 ## ملاحظات
 

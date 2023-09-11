@@ -1,5 +1,5 @@
 <div align="center">
-    <img alt="logo" src="/../../../../khiro95/rukn-web/blob/preview/images/logo.png" height="64"/>
+    <img alt="logo" src="/../../../../khiro95/rukn-web/blob/main/images/logo.png" height="64"/>
 </div>
 
 النسخة العربية متوفرة [هنا](README.ar.md)
@@ -10,7 +10,7 @@ Rukn is an easy tool that allows creating high-quality images which contain Arab
 
 ## Web App
 
-Rukn app is also available as a [web app](https://rukn-app.web.app) and the source is available [here](https://github.com/khiro95/rukn-app).
+Rukn app is also available as a [web app](https://rukn-app.web.app) and the source is available [here](https://github.com/khiro95/rukn-web).
 
 ## Run
 
@@ -55,10 +55,10 @@ Requires [.NET Desktop Runtime 5.x](https://dotnet.microsoft.com/download/dotnet
 
 The following images are examples of work done using the app:
 
-![Sample1](/../../../../khiro95/rukn-web/blob/preview/images/sample1.png)
-![Sample2](/../../../../khiro95/rukn-web/blob/preview/images/sample2.png)
-![Sample3](/../../../../khiro95/rukn-web/blob/preview/images/sample3.png)
-![Sample4](/../../../../khiro95/rukn-web/blob/preview/images/sample4.png)
+![Sample1](/../../../../khiro95/rukn-web/blob/main/images/sample1.png)
+![Sample2](/../../../../khiro95/rukn-web/blob/main/images/sample2.png)
+![Sample3](/../../../../khiro95/rukn-web/blob/main/images/sample3.png)
+![Sample4](/../../../../khiro95/rukn-web/blob/main/images/sample4.png)
 
 ## Notes
 
