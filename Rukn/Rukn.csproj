@@ -10,6 +10,8 @@
         <PackageTags>Quran,Qur'an,Surah,Sura,Ayah,Aya,Image,Background,Rukn</PackageTags>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <ApplicationIcon>appicon.ico</ApplicationIcon>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <Copyright>© 2023 Khiro</Copyright>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -35,6 +37,10 @@
         </None>
         <None Update="quran_hafs_and_english.xml">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="..\LICENSE.md">
+          <Pack>True</Pack>
+          <PackagePath></PackagePath>
         </None>
     </ItemGroup>
 
