@@ -8,6 +8,8 @@
 
 Rukn is an easy tool that allows creating high-quality images which contain Arabic verse(s) from Quran and/or English translation. It makes blending the texts with a background image (or a solid color background) a matter of few clicks! The texts can be styled to have custom color and size to fit the desired design and they can be positioned exactly where needed.
 
+![screenshot](screenshots/rukn_app_en.png)
+
 ## Web App
 
 Rukn app is also available as a [web app](https://rukn-app.web.app) and the source is available [here](https://github.com/khiro95/rukn-web).
